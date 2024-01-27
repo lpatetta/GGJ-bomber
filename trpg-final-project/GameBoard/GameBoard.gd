@@ -36,7 +36,7 @@ func is_occupied(cell: Vector2) -> bool:
 
 
 func get_walkable_cells(unit: Unit) -> Array:
-	return _flood_fill(unit.cell, unit.move_range)
+	return _get_walkables(unit.cell);
 
 
 func _reinitialize() -> void:
@@ -49,6 +49,13 @@ func _reinitialize() -> void:
 		#if unit.is_main:
 		_units[unit.cell] = unit	
 
+func _get_walkables(cell: Vector2)-> Array:
+	var array := [];
+	
+	#print(_unit_overlay.get_cell(cell.x, cell.y));
+	print(_unit_overlay.get_used_cells_by_id(0));
+	
+	return _unit_overlay.get_used_cells_by_id(0);
 
 func _flood_fill(cell: Vector2, max_distance: int) -> Array:
 	var array := []
@@ -100,13 +107,13 @@ func _select_unit(cell: Vector2) -> void:
 			
 	_active_unit.is_selected = true
 	_walkable_cells = get_walkable_cells(_active_unit)
-	_unit_overlay.draw(_walkable_cells)
+	#_unit_overlay.draw(_walkable_cells)
 	_unit_path.initialize(_walkable_cells)
 
 
 func _deselect_active_unit() -> void:
 	_active_unit.is_selected = false
-	_unit_overlay.clear()
+	#_unit_overlay.clear()
 	_unit_path.stop()
 
 
@@ -116,16 +123,16 @@ func _clear_active_unit() -> void:
 
 
 func _on_Cursor_accept_pressed(cell: Vector2) -> void:
+	if is_walking:
+		return
+		
 	if not _active_unit:
 		_select_unit(cell)
 	elif _active_unit.is_selected:
 		_move_active_unit(find_closest_walkable_cell(cell))
 
 
-func _on_Cursor_moved(new_cell: Vector2) -> void:
-	if is_walking:
-		return
-		
+func _on_Cursor_moved(new_cell: Vector2) -> void:		
 	if _active_unit and _active_unit.is_selected:
 		var target_cell = find_closest_walkable_cell(new_cell)
 		_unit_path.draw(_active_unit.cell, target_cell)
