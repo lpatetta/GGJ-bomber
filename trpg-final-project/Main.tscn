@@ -182,10 +182,17 @@ move_range = 5
 skin_offset = Vector2( 6, 15 )
 move_speed = 200.0
 
-[node name="Unit" parent="GameBoard" instance=ExtResource( 12 )]
-position = Vector2( 500, 200 )
+[node name="Player" parent="GameBoard" instance=ExtResource( 12 )]
+position = Vector2( 500, 194.273 )
 grid = ExtResource( 4 )
+move_speed = 300.0
 is_main = true
+starting_scale = Vector2( 0.3, 0.3 )
+target_scale = Vector2( 0.5, 0.47 )
+tween_duration = 0.4
+trasition_type_in = 2
+trasition_type_out = 2
+skins = [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 7 ) ]
 skins = [ SubResource( 6 ), ExtResource( 13 ), ExtResource( 7 ), SubResource( 7 ), SubResource( 8 ) ]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
