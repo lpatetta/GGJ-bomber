@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://GameBoard/Cursor/Cursor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Units/Unit.tscn" type="PackedScene" id=2]
@@ -11,9 +11,14 @@
 [ext_resource path="res://Units/bugcat.png" type="Texture" id=9]
 [ext_resource path="res://Background/Map.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Background/Walls.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Audio/BGM/track1.wav" type="AudioStream" id=12]
-[ext_resource path="res://icon.png" type="Texture" id=13]
 [ext_resource path="res://Units/MainCharacter.tscn" type="PackedScene" id=12]
+[ext_resource path="res://icon.png" type="Texture" id=13]
+[ext_resource path="res://Audio/BGM/track3.wav" type="AudioStream" id=14]
+[ext_resource path="res://Audio/BGM/track2  dafunk.wav" type="AudioStream" id=15]
+[ext_resource path="res://Audio/BGM/track1.wav" type="AudioStream" id=16]
+[ext_resource path="res://Units/DonOrtiva/donortiva2.png" type="Texture" id=17]
+[ext_resource path="res://Units/DonOrtiva/donortiva3.png" type="Texture" id=18]
+[ext_resource path="res://Units/DonOrtiva/donortiva1.png" type="Texture" id=19]
 
 [sub_resource type="Curve2D" id=1]
 resource_local_to_scene = true
@@ -33,7 +38,48 @@ _data = {
 "points": PoolVector2Array(  )
 }
 
+[sub_resource type="AnimatedTexture" id=6]
+flags = 4
+frame_0/texture = ExtResource( 19 )
+
+[sub_resource type="AnimatedTexture" id=7]
+flags = 4
+frame_0/texture = ExtResource( 17 )
+
+[sub_resource type="AnimatedTexture" id=8]
+flags = 4
+frame_0/texture = ExtResource( 18 )
+
 [sub_resource type="GDScript" id=4]
+script/source = "extends AudioStreamPlayer
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+export (Array, AudioStream) var bgm
+
+onready var audio_player = $\".\"
+
+onready var current_bgm = 0
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	random_bgm()
+	pass # Replace with function body.
+
+func random_bgm():
+	bgm.shuffle()
+	var random_select = bgm[0]
+	audio_player.play()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[sub_resource type="GDScript" id=5]
 script/source = "extends Node
 
 
@@ -41,19 +87,44 @@ script/source = "extends Node
 # var a = 2
 # var b = \"text\"
 onready var menu_opciones = $CanvasLayer/VBoxContainer
-
+onready var logo = $Sprite
+onready var barra_bgm = $CanvasLayer/VBoxContainer/BGM
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
-func abrir_opciones():
-	if Input.is_action_just_pressed(\"menu_opciones\"):
-		print (\"FUnca\")
+func _unhandled_input(event):
+	if event.is_action_pressed(\"menu_opciones\") and menu_opciones.visible == false:
 		menu_opciones.show()
+		logo.show()
+	elif event.is_action_pressed(\"menu_opciones\"):
+		menu_opciones.hide()
+		logo.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_BGM_value_changed(value):
+	
+	if barra_bgm.value <= 0:
+		var audio_player = get_parent().get_node(\"AudioStreamPlayer\")
+		audio_player.set_volume_db(-50)
+	elif barra_bgm.value <= 25:
+		var audio_player = get_parent().get_node(\"AudioStreamPlayer\")
+		audio_player.set_volume_db(-15)
+	elif barra_bgm.value <= 50:
+		var audio_player = get_parent().get_node(\"AudioStreamPlayer\")
+		audio_player.set_volume_db(-10)
+	elif barra_bgm.value <= 75:
+		var audio_player = get_parent().get_node(\"AudioStreamPlayer\")
+		audio_player.set_volume_db(-5)
+	elif barra_bgm.value >= 100:
+		var audio_player = get_parent().get_node(\"AudioStreamPlayer\")
+		audio_player.set_volume_db(0)
+		
+	pass # Replace with function body.
 "
 
 [node name="Main" type="Node2D"]
@@ -69,7 +140,6 @@ script = ExtResource( 3 )
 grid = ExtResource( 4 )
 
 [node name="UnitOverlay" parent="GameBoard" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.329412 )
 tile_data = PoolIntArray( 65547, 0, 0, 65548, 0, 0, 65549, 0, 0, 65550, 0, 0, 131076, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131083, 0, 0, 131086, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196616, 0, 0, 196619, 0, 0, 196622, 0, 0, 262152, 0, 0, 262155, 0, 0, 262158, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327694, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393230, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0 )
 
 [node name="UnitPath" parent="GameBoard" instance=ExtResource( 6 )]
@@ -116,14 +186,16 @@ move_speed = 200.0
 position = Vector2( 500, 200 )
 grid = ExtResource( 4 )
 is_main = true
-skins = [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 7 ) ]
+skins = [ SubResource( 6 ), ExtResource( 13 ), ExtResource( 7 ), SubResource( 7 ), SubResource( 8 ) ]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 12 )
+stream = ExtResource( 16 )
 autoplay = true
+script = SubResource( 4 )
+bgm = [ ExtResource( 16 ), ExtResource( 15 ), ExtResource( 14 ) ]
 
 [node name="UI" type="Node" parent="."]
-script = SubResource( 4 )
+script = SubResource( 5 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="UI"]
 
@@ -157,6 +229,7 @@ valign = 1
 margin_top = 84.0
 margin_right = 300.0
 margin_bottom = 100.0
+value = 100.0
 
 [node name="SFXLabel" type="Label" parent="UI/CanvasLayer/VBoxContainer"]
 margin_top = 128.0
@@ -170,6 +243,7 @@ valign = 1
 margin_top = 170.0
 margin_right = 300.0
 margin_bottom = 186.0
+value = 100.0
 
 [node name="Volver" type="Button" parent="UI/CanvasLayer/VBoxContainer"]
 margin_top = 214.0
@@ -185,3 +259,4 @@ texture = ExtResource( 13 )
 
 [connection signal="accept_pressed" from="GameBoard/Cursor" to="GameBoard" method="_on_Cursor_accept_pressed"]
 [connection signal="moved" from="GameBoard/Cursor" to="GameBoard" method="_on_Cursor_moved"]
+[connection signal="value_changed" from="UI/CanvasLayer/VBoxContainer/BGM" to="UI" method="_on_BGM_value_changed"]

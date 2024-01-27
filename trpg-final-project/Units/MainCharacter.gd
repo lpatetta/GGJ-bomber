@@ -4,7 +4,7 @@ onready var _changing_skin_timer: Timer = $Timer
 var _is_changing_skin = false;
 var _current_skin = 0;
 
-export (Array, Texture) var skins
+export (Array, AnimatedTexture) var skins
 
 func _ready():
 	._ready();
