@@ -11,6 +11,8 @@
 [ext_resource path="res://Units/bugcat.png" type="Texture" id=9]
 [ext_resource path="res://Background/Map.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Background/Walls.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Audio/BGM/track1.wav" type="AudioStream" id=12]
+[ext_resource path="res://icon.png" type="Texture" id=13]
 [ext_resource path="res://Units/MainCharacter.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Curve2D" id=1]
@@ -30,6 +32,29 @@ resource_local_to_scene = true
 _data = {
 "points": PoolVector2Array(  )
 }
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Node
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+onready var menu_opciones = $CanvasLayer/VBoxContainer
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+func abrir_opciones():
+	if Input.is_action_just_pressed(\"menu_opciones\"):
+		print (\"FUnca\")
+		menu_opciones.show()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
 
 [node name="Main" type="Node2D"]
 
@@ -92,6 +117,71 @@ position = Vector2( 500, 200 )
 grid = ExtResource( 4 )
 is_main = true
 skins = [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 7 ) ]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+autoplay = true
+
+[node name="UI" type="Node" parent="."]
+script = SubResource( 4 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="UI"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/CanvasLayer"]
+visible = false
+margin_left = 500.0
+margin_top = 300.0
+margin_right = 800.0
+margin_bottom = 600.0
+custom_constants/separation = 28
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="UI/CanvasLayer/VBoxContainer"]
+margin_right = 300.0
+margin_bottom = 14.0
+text = "Opciones"
+align = 1
+valign = 1
+
+[node name="BGMLabel" type="Label" parent="UI/CanvasLayer/VBoxContainer"]
+margin_top = 42.0
+margin_right = 300.0
+margin_bottom = 56.0
+text = "Música"
+align = 1
+valign = 1
+
+[node name="BGM" type="HSlider" parent="UI/CanvasLayer/VBoxContainer"]
+margin_top = 84.0
+margin_right = 300.0
+margin_bottom = 100.0
+
+[node name="SFXLabel" type="Label" parent="UI/CanvasLayer/VBoxContainer"]
+margin_top = 128.0
+margin_right = 300.0
+margin_bottom = 142.0
+text = "SFX"
+align = 1
+valign = 1
+
+[node name="SFX" type="HSlider" parent="UI/CanvasLayer/VBoxContainer"]
+margin_top = 170.0
+margin_right = 300.0
+margin_bottom = 186.0
+
+[node name="Volver" type="Button" parent="UI/CanvasLayer/VBoxContainer"]
+margin_top = 214.0
+margin_right = 300.0
+margin_bottom = 234.0
+text = "Volver"
+
+[node name="Sprite" type="Sprite" parent="UI"]
+visible = false
+position = Vector2( 643.131, 99.8435 )
+scale = Vector2( 3.02312, 2.21364 )
+texture = ExtResource( 13 )
 
 [connection signal="accept_pressed" from="GameBoard/Cursor" to="GameBoard" method="_on_Cursor_accept_pressed"]
 [connection signal="moved" from="GameBoard/Cursor" to="GameBoard" method="_on_Cursor_moved"]
