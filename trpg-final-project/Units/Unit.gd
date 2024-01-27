@@ -19,6 +19,8 @@ export var skin_offset := Vector2.ZERO setget set_skin_offset
 ## The unit's move speed when it's moving along a path.
 export var move_speed := 600.0
 
+export var is_main:= false
+
 ## Coordinates of the current cell the cursor moved to.
 var cell := Vector2.ZERO setget set_cell
 ## Toggles the "selected" animation on the unit.
