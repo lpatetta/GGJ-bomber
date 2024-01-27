@@ -87,10 +87,14 @@ move_range = 5
 skin_offset = Vector2( 6, 15 )
 move_speed = 200.0
 
-[node name="Unit" parent="GameBoard" instance=ExtResource( 12 )]
-position = Vector2( 500, 200 )
+[node name="Player" parent="GameBoard" instance=ExtResource( 12 )]
+position = Vector2( 500, 198.318 )
 grid = ExtResource( 4 )
+move_speed = 150.0
 is_main = true
+starting_scale = Vector2( 0.5, 0.5 )
+target_scale = Vector2( 0.8, 0.76 )
+tween_duration = 0.1
 skins = [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 7 ) ]
 
 [connection signal="accept_pressed" from="GameBoard/Cursor" to="GameBoard" method="_on_Cursor_accept_pressed"]
