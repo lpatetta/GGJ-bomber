@@ -6,9 +6,7 @@ var _is_changing_skin = false;
 var _current_skin = 0;
 
 export (Array, AnimatedTexture) var skins
-export var starting_scale:Vector2;
-export var target_scale:Vector2;
-export var tween_duration:float;
+
 
 
 
