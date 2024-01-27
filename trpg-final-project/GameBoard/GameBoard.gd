@@ -1,15 +1,10 @@
-## Represents and manages the game board. Stores references to entities that are in each cell and
-## tells whether cells are occupied or not.
-## Units can only move around the grid one at a time.
 class_name GameBoard
 extends Node2D
 
 const DIRECTIONS = [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN]
 
-## Resource of type Grid.
 export var grid: Resource
 
-## Mapping of coordinates of a cell to a reference to the unit it contains.
 var _units := {}
 var _active_unit: Unit
 var _walkable_cells := []
@@ -35,17 +30,14 @@ func _get_configuration_warning() -> String:
 	return warning
 
 
-## Returns `true` if the cell is occupied by a unit.
 func is_occupied(cell: Vector2) -> bool:
 	return true if _units.has(cell) else false
 
 
-## Returns an array of cells a given unit can walk using the flood fill algorithm.
 func get_walkable_cells(unit: Unit) -> Array:
 	return _flood_fill(unit.cell, unit.move_range)
 
 
-## Clears, and refills the `_units` dictionary with game objects that are on the board.
 func _reinitialize() -> void:
 	_units.clear()
 
@@ -56,7 +48,6 @@ func _reinitialize() -> void:
 		_units[unit.cell] = unit
 
 
-## Returns an array with all the coordinates of walkable cells based on the `max_distance`.
 func _flood_fill(cell: Vector2, max_distance: int) -> Array:
 	var array := []
 	var stack := [cell]
@@ -84,21 +75,19 @@ func _flood_fill(cell: Vector2, max_distance: int) -> Array:
 	return array
 
 
-## Updates the _units dictionary with the target position for the unit and asks the _active_unit to walk to it.
 func _move_active_unit(new_cell: Vector2) -> void:
 	if is_occupied(new_cell) or not new_cell in _walkable_cells:
 		return
-	# warning-ignore:return_value_discarded
 	_units.erase(_active_unit.cell)
 	_units[new_cell] = _active_unit
 	_deselect_active_unit()
 	_active_unit.walk_along(_unit_path.current_path)
+	
 	yield(_active_unit, "walk_finished")
+	
 	_clear_active_unit()
 
 
-## Selects the unit in the `cell` if there's one there.
-## Sets it as the `_active_unit` and draws its walkable cells and interactive move path. 
 func _select_unit(cell: Vector2) -> void:
 	if not _units.has(cell):
 		return
@@ -110,28 +99,45 @@ func _select_unit(cell: Vector2) -> void:
 	_unit_path.initialize(_walkable_cells)
 
 
-## Deselects the active unit, clearing the cells overlay and interactive path drawing.
 func _deselect_active_unit() -> void:
 	_active_unit.is_selected = false
 	_unit_overlay.clear()
 	_unit_path.stop()
 
 
-## Clears the reference to the _active_unit and the corresponding walkable cells.
 func _clear_active_unit() -> void:
 	_active_unit = null
 	_walkable_cells.clear()
 
 
-## Selects or moves a unit based on where the cursor is.
 func _on_Cursor_accept_pressed(cell: Vector2) -> void:
 	if not _active_unit:
 		_select_unit(cell)
 	elif _active_unit.is_selected:
-		_move_active_unit(cell)
+		_move_active_unit(find_closest_walkable_cell(cell))
 
 
-## Updates the interactive path's drawing if there's an active and selected unit.
 func _on_Cursor_moved(new_cell: Vector2) -> void:
 	if _active_unit and _active_unit.is_selected:
-		_unit_path.draw(_active_unit.cell, new_cell)
+		var target_cell = find_closest_walkable_cell(new_cell)
+		_unit_path.draw(_active_unit.cell, target_cell)
+
+
+func find_closest_walkable_cell(cell: Vector2) -> Vector2:
+	if not _units.has(cell):
+		return cell
+
+	var closest_cell := cell
+	var min_distance := INF
+
+	for direction in DIRECTIONS:
+		var target: Vector2 = cell + direction
+		if _units.has(target) and not _units[target] == _active_unit:
+			continue
+
+		var distance := target.distance_squared_to(_active_unit.cell)
+		if distance < min_distance:
+			min_distance = distance
+			closest_cell = target
+
+	return closest_cell

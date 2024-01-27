@@ -33,6 +33,8 @@ _data = {
 
 [node name="Map" parent="." instance=ExtResource( 10 )]
 
+[node name="Map2" parent="." instance=ExtResource( 10 )]
+
 [node name="GameBoard" type="YSort" parent="."]
 script = ExtResource( 3 )
 grid = ExtResource( 4 )
@@ -53,7 +55,7 @@ skin_offset = Vector2( 2, 9 )
 [node name="Bear2" parent="GameBoard" instance=ExtResource( 2 )]
 position = Vector2( 800, 480 )
 curve = SubResource( 1 )
-skin = ExtResource( 8 )
+skin = ExtResource( 9 )
 move_range = 3
 skin_offset = Vector2( 2, 9 )
 
@@ -75,7 +77,7 @@ skin_offset = Vector2( 5, 12 )
 position = Vector2( 355.298, 298.556 )
 curve = SubResource( 3 )
 skin = ExtResource( 7 )
-move_range = 5
+move_range = 99
 skin_offset = Vector2( 6, 17 )
 
 [connection signal="accept_pressed" from="GameBoard/Cursor" to="GameBoard" method="_on_Cursor_accept_pressed"]
