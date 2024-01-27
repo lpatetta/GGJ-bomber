@@ -6,8 +6,9 @@ const DIRECTIONS = [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN]
 export var grid: Resource
 
 var _units := {}
-var _active_unit: Unit
+var _active_unit: MainCharacter;
 var _walkable_cells := []
+var _interacted_npc:Unit;
 
 onready var _unit_overlay: UnitOverlay = $UnitOverlay
 onready var _unit_path: UnitPath = $UnitPath
@@ -36,7 +37,7 @@ func is_occupied(cell: Vector2) -> bool:
 
 
 func get_walkable_cells(unit: Unit) -> Array:
-	return _get_walkables(unit.cell);
+	return _get_walkables(unit.cell, unit.move_range);
 
 
 func _reinitialize() -> void:
@@ -47,17 +48,44 @@ func _reinitialize() -> void:
 		if not unit:
 			continue
 		#if unit.is_main:
-		_units[unit.cell] = unit	
+		_units[unit.cell] = unit
+	_active_unit = $Player
+	_select_unit(_active_unit.cell) #reselect main unit
 
-func _get_walkables(cell: Vector2)-> Array:
-	var array := [];
-	
-	#print(_unit_overlay.get_cell(cell.x, cell.y));
-	#print(_unit_overlay.get_used_cells_by_id(0));
-	
+func _get_walkables(cell: Vector2, max_distance: int)-> Array:
+	var array := _unit_overlay.get_used_cells_by_id(0);
+		
 	# FALTA AGREGAR PERSONAJES AL ARRAY
+	for u in _units:
+		if u in array:
+			array.remove( array.find(u) )
 	
-	return _unit_overlay.get_used_cells_by_id(0);
+	
+	var stack := [cell]
+	while not stack.empty():
+		var current = stack.pop_back()
+		if not grid.is_within_bounds(current):
+			continue
+		if current in array:
+			continue
+
+		var difference: Vector2 = (current - cell).abs()
+		var distance := int(difference.x + difference.y)
+		#if distance > max_distance:
+		#	continue
+
+		array.append(current)
+		for direction in DIRECTIONS:
+			var coordinates: Vector2 = current + direction
+			if is_occupied(coordinates):
+				
+				continue
+			if coordinates in array:
+				continue
+
+			stack.append(coordinates)
+	
+	return array
 
 func _flood_fill(cell: Vector2, max_distance: int) -> Array:
 	var array := []
@@ -71,8 +99,8 @@ func _flood_fill(cell: Vector2, max_distance: int) -> Array:
 
 		var difference: Vector2 = (current - cell).abs()
 		var distance := int(difference.x + difference.y)
-		if distance > max_distance:
-			continue
+		#if distance > max_distance:
+		#	continue
 
 		array.append(current)
 		for direction in DIRECTIONS:
@@ -87,6 +115,9 @@ func _flood_fill(cell: Vector2, max_distance: int) -> Array:
 
 
 func _move_active_unit(new_cell: Vector2) -> void:
+	print("is_occupied(new_cell)", is_occupied(new_cell) );
+	print("not new_cell in _walkable_cells", not new_cell in _walkable_cells);
+	
 	if is_occupied(new_cell) or not new_cell in _walkable_cells:
 		return
 	_units.erase(_active_unit.cell)
@@ -97,6 +128,8 @@ func _move_active_unit(new_cell: Vector2) -> void:
 	yield(_active_unit, "walk_finished")
 	_select_unit(_active_unit.cell) #reselect main unit
 	is_walking = false;
+	if _interacted_npc:
+		_interacted_npc.react( _active_unit._current_skin );
 	
 	
 	#_clear_active_unit()
@@ -113,6 +146,12 @@ func _select_unit(cell: Vector2) -> void:
 	_walkable_cells = get_walkable_cells(_active_unit)
 	#_unit_overlay.draw(_walkable_cells)
 	_unit_path.initialize(_walkable_cells)
+	
+func _interact_npc(cell:Vector2) -> void:
+	if _units.has(cell):
+		_interacted_npc = _units[cell]
+	else:
+		_interacted_npc = null;
 
 
 func _deselect_active_unit() -> void:
@@ -130,10 +169,13 @@ func _on_Cursor_accept_pressed(cell: Vector2) -> void:
 	if is_walking:
 		return
 		
-	if not _active_unit:
-		_select_unit(cell)
-	elif _active_unit.is_selected:
-		_move_active_unit(find_closest_walkable_cell(cell))
+	_interact_npc(cell)
+	_move_active_unit(find_closest_walkable_cell(cell))
+		 
+#	if not _active_unit:
+#		_select_unit(cell)
+#	elif _active_unit.is_selected:
+#		_move_active_unit(find_closest_walkable_cell(cell))
 
 
 func _on_Cursor_moved(new_cell: Vector2) -> void:		

@@ -1,3 +1,4 @@
+class_name MainCharacter
 extends Unit
 
 onready var _changing_skin_timer: Timer = $Timer
@@ -9,8 +10,6 @@ export var starting_scale:Vector2;
 export var target_scale:Vector2;
 export var tween_duration:float;
 
-export var trasition_type_in:int = Tween.TRANS_LINEAR;
-export var trasition_type_out:int = Tween.TRANS_SINE;
 
 
 
@@ -34,9 +33,7 @@ func _set_next_skin():
 	var tween = get_node("Tween")
 	tween.interpolate_property($PathFollow2D/Sprite, "scale", starting_scale,target_scale, tween_duration,
 		trasition_type_in, Tween.EASE_IN_OUT)
-		
 	tween.interpolate_callback(self, tween_duration, "_return_scale");
-	#tween.tween_callback(_return_scale);
 	tween.start();
 	set_skin( skins[_current_skin])
 	
