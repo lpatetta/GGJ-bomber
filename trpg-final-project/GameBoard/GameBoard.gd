@@ -12,6 +12,7 @@ var _walkable_cells := []
 onready var _unit_overlay: UnitOverlay = $UnitOverlay
 onready var _unit_path: UnitPath = $UnitPath
 
+var is_walking = false;
 
 func _ready() -> void:
 	_reinitialize()
@@ -45,7 +46,8 @@ func _reinitialize() -> void:
 		var unit := child as Unit
 		if not unit:
 			continue
-		_units[unit.cell] = unit
+		#if unit.is_main:
+		_units[unit.cell] = unit	
 
 
 func _flood_fill(cell: Vector2, max_distance: int) -> Array:
@@ -80,12 +82,13 @@ func _move_active_unit(new_cell: Vector2) -> void:
 		return
 	_units.erase(_active_unit.cell)
 	_units[new_cell] = _active_unit
-	_deselect_active_unit()
+	#_deselect_active_unit()
 	_active_unit.walk_along(_unit_path.current_path)
-	
+	is_walking = true;
 	yield(_active_unit, "walk_finished")
-	
-	_clear_active_unit()
+	_select_unit(_active_unit.cell)
+	is_walking = false;
+	#_clear_active_unit()
 
 
 func _select_unit(cell: Vector2) -> void:
@@ -94,12 +97,6 @@ func _select_unit(cell: Vector2) -> void:
 		return
 		
 	_active_unit = _units[cell]
-	
-	print(_active_unit.is_main)
-	
-	if not _active_unit.is_main:
-		_clear_active_unit()
-		return
 			
 	_active_unit.is_selected = true
 	_walkable_cells = get_walkable_cells(_active_unit)
@@ -126,6 +123,9 @@ func _on_Cursor_accept_pressed(cell: Vector2) -> void:
 
 
 func _on_Cursor_moved(new_cell: Vector2) -> void:
+	if is_walking:
+		return
+		
 	if _active_unit and _active_unit.is_selected:
 		var target_cell = find_closest_walkable_cell(new_cell)
 		_unit_path.draw(_active_unit.cell, target_cell)

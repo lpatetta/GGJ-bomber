@@ -75,8 +75,9 @@ skin_offset = Vector2( 5, 12 )
 position = Vector2( 355.298, 298.556 )
 curve = SubResource( 3 )
 skin = ExtResource( 7 )
-move_range = 99
+move_range = 5
 skin_offset = Vector2( 6, 17 )
+move_speed = 200.0
 is_main = true
 
 [connection signal="accept_pressed" from="GameBoard/Cursor" to="GameBoard" method="_on_Cursor_accept_pressed"]
