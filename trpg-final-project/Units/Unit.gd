@@ -12,6 +12,8 @@ signal walk_finished
 export var grid: Resource
 ## Texture representing the unit.
 export var skin: Texture setget set_skin
+
+
 ## Distance to which the unit can walk in cells.
 export var move_range := 6
 ## Offset to apply to the `skin` sprite in pixels.
@@ -32,13 +34,12 @@ onready var _sprite: Sprite = $PathFollow2D/Sprite
 onready var _anim_player: AnimationPlayer = $AnimationPlayer
 onready var _path_follow: PathFollow2D = $PathFollow2D
 
-
 func _ready() -> void:
 	set_process(false)
 
 	self.cell = grid.calculate_grid_coordinates(position)
 	position = grid.calculate_map_position(cell)
-
+	
 	# We create the curve resource here because creating it in the editor prevents us from
 	# moving the unit.
 	if not Engine.editor_hint:
@@ -80,12 +81,12 @@ func set_is_selected(value: bool) -> void:
 	else:
 		_anim_player.play("idle")
 
-
 func set_skin(value: Texture) -> void:
 	skin = value
 	if not _sprite:
 		yield(self, "ready")
 	_sprite.texture = value
+
 
 
 func set_skin_offset(value: Vector2) -> void:
@@ -98,3 +99,4 @@ func set_skin_offset(value: Vector2) -> void:
 func _set_is_walking(value: bool) -> void:
 	_is_walking = value
 	set_process(_is_walking)
+

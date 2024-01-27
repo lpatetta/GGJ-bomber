@@ -18,7 +18,7 @@ func _ready() -> void:
 	_reinitialize()
 
 
-func _unhandled_input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:		
 	if _active_unit and event.is_action_pressed("ui_cancel"):
 		_deselect_active_unit()
 		_clear_active_unit()
@@ -53,7 +53,9 @@ func _get_walkables(cell: Vector2)-> Array:
 	var array := [];
 	
 	#print(_unit_overlay.get_cell(cell.x, cell.y));
-	print(_unit_overlay.get_used_cells_by_id(0));
+	#print(_unit_overlay.get_used_cells_by_id(0));
+	
+	# FALTA AGREGAR PERSONAJES AL ARRAY
 	
 	return _unit_overlay.get_used_cells_by_id(0);
 
@@ -93,8 +95,10 @@ func _move_active_unit(new_cell: Vector2) -> void:
 	_active_unit.walk_along(_unit_path.current_path)
 	is_walking = true;
 	yield(_active_unit, "walk_finished")
-	_select_unit(_active_unit.cell)
+	_select_unit(_active_unit.cell) #reselect main unit
 	is_walking = false;
+	
+	
 	#_clear_active_unit()
 
 

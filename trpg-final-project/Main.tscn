@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://GameBoard/Cursor/Cursor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Units/Unit.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Units/bugcat.png" type="Texture" id=9]
 [ext_resource path="res://Background/Map.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Background/Walls.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Units/MainCharacter.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Curve2D" id=1]
 resource_local_to_scene = true
@@ -44,7 +45,7 @@ grid = ExtResource( 4 )
 
 [node name="UnitOverlay" parent="GameBoard" instance=ExtResource( 5 )]
 modulate = Color( 1, 1, 1, 0.329412 )
-tile_data = PoolIntArray( 65547, 0, 0, 65548, 0, 0, 65549, 0, 0, 65550, 0, 0, 131076, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131083, 0, 0, 131086, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196616, 0, 0, 196619, 0, 0, 196622, 0, 0, 262152, 0, 0, 262155, 0, 0, 262158, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327694, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393230, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0 )
+tile_data = PoolIntArray( 65547, 0, 0, 65548, 0, 0, 65549, 0, 0, 65550, 0, 0, 131076, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131083, 0, 0, 131086, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196616, 0, 0, 196619, 0, 0, 196622, 0, 0, 262152, 0, 0, 262155, 0, 0, 262158, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327694, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393230, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0 )
 
 [node name="UnitPath" parent="GameBoard" instance=ExtResource( 6 )]
 
@@ -83,9 +84,14 @@ position = Vector2( 355.298, 298.556 )
 curve = SubResource( 3 )
 skin = ExtResource( 7 )
 move_range = 5
-skin_offset = Vector2( 6, 17 )
+skin_offset = Vector2( 6, 15 )
 move_speed = 200.0
+
+[node name="Unit" parent="GameBoard" instance=ExtResource( 12 )]
+position = Vector2( 500, 200 )
+grid = ExtResource( 4 )
 is_main = true
+skins = [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 7 ) ]
 
 [connection signal="accept_pressed" from="GameBoard/Cursor" to="GameBoard" method="_on_Cursor_accept_pressed"]
 [connection signal="moved" from="GameBoard/Cursor" to="GameBoard" method="_on_Cursor_moved"]
