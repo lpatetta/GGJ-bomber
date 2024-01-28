@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://GameBoard/Cursor/Cursor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Units/Unit.tscn" type="PackedScene" id=2]
@@ -24,7 +24,6 @@
 [ext_resource path="res://Assets/don ortiva/don ortiva 3.png" type="Texture" id=23]
 [ext_resource path="res://VideosMemes/Voicy_rick-astley.ogv" type="VideoStream" id=24]
 [ext_resource path="res://Assets/descanzord/amarillo/03.png" type="Texture" id=25]
-[ext_resource path="res://Assets/bb ortiva/bb ortiva 2.png" type="Texture" id=53]
 [ext_resource path="res://Assets/sra ortiva/sra ortiva 1.png" type="Texture" id=26]
 [ext_resource path="res://Assets/sra ortiva/sra ortiva 2.png" type="Texture" id=27]
 [ext_resource path="res://Assets/sr ortiva/sr ortiva 2.png" type="Texture" id=28]
@@ -45,6 +44,7 @@
 [ext_resource path="res://UI/logo.png" type="Texture" id=50]
 [ext_resource path="res://Assets/descanzord/amarillo/05.png" type="Texture" id=51]
 [ext_resource path="res://PanelContainer.gd" type="Script" id=52]
+[ext_resource path="res://Assets/bb ortiva/bb ortiva 2.png" type="Texture" id=53]
 
 [sub_resource type="AnimatedTexture" id=1]
 flags = 4
@@ -95,7 +95,7 @@ frame_2/delay_sec = 0.0
 flags = 4
 frames = 2
 frame_0/texture = ExtResource( 19 )
-frame_1/texture = ExtResource( 25 )
+frame_1/texture = ExtResource( 53 )
 frame_1/delay_sec = 0.0
 
 [sub_resource type="AnimatedTexture" id=7]
@@ -131,7 +131,7 @@ frame_3/delay_sec = 0.0
 flags = 4
 frames = 2
 frame_0/texture = ExtResource( 19 )
-frame_1/texture = ExtResource( 25 )
+frame_1/texture = ExtResource( 53 )
 frame_1/delay_sec = 0.0
 
 [sub_resource type="AnimatedTexture" id=11]
