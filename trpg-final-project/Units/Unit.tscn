@@ -38,7 +38,15 @@ tracks/0/keys = {
 [node name="Unit" type="Path2D"]
 curve = null
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 grid = ExtResource( 2 )
+starting_scale = Vector2( 0.8, 0.8 )
+target_scale = Vector2( 0.5, 0.5 )
+tween_duration = 0.3
+trasition_type_in = 4
+trasition_type_out = 5
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 rotate = false
@@ -58,3 +66,5 @@ offset = Vector2( -3.8147e-06, -185 )
 autoplay = "idle"
 anims/idle = SubResource( 1 )
 anims/selected = SubResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]
