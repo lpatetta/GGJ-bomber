@@ -1,3 +1,4 @@
+[gd_scene load_steps=32 format=2]
 [gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://GameBoard/Cursor/Cursor.tscn" type="PackedScene" id=1]
@@ -20,6 +21,8 @@
 [ext_resource path="res://Units/DonOrtiva/donortiva3.png" type="Texture" id=18]
 [ext_resource path="res://Units/Descanzord/05.png" type="Texture" id=19]
 [ext_resource path="res://Units/Descanzord/03.png" type="Texture" id=20]
+[ext_resource path="res://VideosMemes/Voicy_rick-astley.ogv" type="VideoStream" id=21]
+[ext_resource path="res://UI/logo.png" type="Texture" id=22]
 [ext_resource path="res://Camera.gd" type="Script" id=21]
 
 [sub_resource type="Curve2D" id=1]
@@ -55,6 +58,28 @@ frame_0/texture = ExtResource( 17 )
 [sub_resource type="AnimatedTexture" id=6]
 flags = 4
 frame_0/texture = ExtResource( 18 )
+
+[sub_resource type="GDScript" id=9]
+script/source = "extends CanvasLayer
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+onready var panel = $PanelContainer
+onready var target_panel = $TargetPanel
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	var lerpspeed = 0.05
+	panel.rect_size.x = lerp(panel.rect_size.x, target_panel.x, lerpspeed)
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
 
 [sub_resource type="GDScript" id=7]
 script/source = "extends AudioStreamPlayer
@@ -92,9 +117,10 @@ script/source = "extends Node
 # Declare member variables here. Examples:
 # var a = 2
 # var b = \"text\"
-onready var menu_opciones = $CanvasLayer/VBoxContainer
-onready var logo = $Sprite
-onready var barra_bgm = $CanvasLayer/VBoxContainer/BGM
+onready var menu_opciones = $CanvasLayer2/VBoxContainer
+onready var logo = $CanvasLayer2/Sprite
+onready var barra_bgm = $CanvasLayer2/VBoxContainer/BGM
+onready var barra_SFX = $CanvasLayer2/VBoxContainer/SFX
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -127,6 +153,27 @@ func _on_BGM_value_changed(value):
 		var audio_player = get_parent().get_node(\"AudioStreamPlayer\")
 		audio_player.set_volume_db(-5)
 	elif barra_bgm.value >= 100:
+		var audio_player = get_parent().get_node(\"AudioStreamPlayer\")
+		audio_player.set_volume_db(0)
+		
+	pass # Replace with function body.
+
+
+func _on_SFX_value_changed(value):
+	
+	if barra_SFX.value <= 0:
+		var audio_player = get_parent().get_node(\"AudioStreamPlayer\")
+		audio_player.set_volume_db(-50)
+	elif barra_SFX.value <= 25:
+		var audio_player = get_parent().get_node(\"AudioStreamPlayer\")
+		audio_player.set_volume_db(-15)
+	elif barra_SFX.value <= 50:
+		var audio_player = get_parent().get_node(\"AudioStreamPlayer\")
+		audio_player.set_volume_db(-10)
+	elif barra_SFX.value <= 75:
+		var audio_player = get_parent().get_node(\"AudioStreamPlayer\")
+		audio_player.set_volume_db(-5)
+	elif barra_SFX.value >= 100:
 		var audio_player = get_parent().get_node(\"AudioStreamPlayer\")
 		audio_player.set_volume_db(0)
 		
@@ -190,12 +237,16 @@ move_range = 8
 skin_offset = Vector2( 5, 12 )
 
 [node name="Squirrel" parent="GameBoard" instance=ExtResource( 2 )]
-position = Vector2( 355.298, 700 )
+position = Vector2( 500, 700 )
 curve = SubResource( 3 )
 skin = ExtResource( 7 )
 move_range = 5
 skin_offset = Vector2( 6, 15 )
 move_speed = 200.0
+
+[node name="Unit" parent="GameBoard" instance=ExtResource( 2 )]
+position = Vector2( 290.167, 359.141 )
+skin = ExtResource( 7 )
 
 [node name="Player" parent="GameBoard" instance=ExtResource( 12 )]
 position = Vector2( 501.682, 194.273 )
@@ -213,9 +264,38 @@ current = true
 script = ExtResource( 21 )
 TargetNodepath = NodePath("../Player")
 
-[node name="Node2D" type="Node2D" parent="GameBoard"]
+[node name="CanvasLayer" type="CanvasLayer" parent="GameBoard/Player/Camera2D"]
+script = SubResource( 9 )
+
+[node name="PanelContainer" type="PanelContainer" parent="GameBoard/Player/Camera2D/CanvasLayer"]
+margin_left = 503.0
+margin_top = 46.0
+margin_right = 753.0
+margin_bottom = 296.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VideoPlayer" type="VideoPlayer" parent="GameBoard/Player/Camera2D/CanvasLayer/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 243.0
+margin_bottom = 243.0
+stream = ExtResource( 21 )
+volume_db = -15.0
+
+[node name="TargetPanel" type="PanelContainer" parent="GameBoard/Player/Camera2D/CanvasLayer"]
+visible = false
+margin_left = 503.0
+margin_top = 46.0
+margin_right = 1003.0
+margin_bottom = 546.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
 autoplay = true
 script = SubResource( 7 )
 bgm = [ null, ExtResource( 15 ), ExtResource( 14 ) ]
@@ -223,9 +303,15 @@ bgm = [ null, ExtResource( 15 ), ExtResource( 14 ) ]
 [node name="UI" type="Node" parent="."]
 script = SubResource( 8 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="UI"]
+[node name="CanvasLayer2" type="CanvasLayer" parent="UI"]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/CanvasLayer"]
+[node name="Sprite" type="Sprite" parent="UI/CanvasLayer2"]
+visible = false
+position = Vector2( 643.131, 152.843 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 22 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/CanvasLayer2"]
 visible = false
 margin_left = 500.0
 margin_top = 300.0
@@ -236,14 +322,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="UI/CanvasLayer/VBoxContainer"]
+[node name="Label" type="Label" parent="UI/CanvasLayer2/VBoxContainer"]
 margin_right = 300.0
 margin_bottom = 14.0
 text = "Opciones"
 align = 1
 valign = 1
 
-[node name="BGMLabel" type="Label" parent="UI/CanvasLayer/VBoxContainer"]
+[node name="BGMLabel" type="Label" parent="UI/CanvasLayer2/VBoxContainer"]
 margin_top = 42.0
 margin_right = 300.0
 margin_bottom = 56.0
@@ -251,13 +337,13 @@ text = "Música"
 align = 1
 valign = 1
 
-[node name="BGM" type="HSlider" parent="UI/CanvasLayer/VBoxContainer"]
+[node name="BGM" type="HSlider" parent="UI/CanvasLayer2/VBoxContainer"]
 margin_top = 84.0
 margin_right = 300.0
 margin_bottom = 100.0
 value = 100.0
 
-[node name="SFXLabel" type="Label" parent="UI/CanvasLayer/VBoxContainer"]
+[node name="SFXLabel" type="Label" parent="UI/CanvasLayer2/VBoxContainer"]
 margin_top = 128.0
 margin_right = 300.0
 margin_bottom = 142.0
@@ -265,81 +351,17 @@ text = "SFX"
 align = 1
 valign = 1
 
-[node name="SFX" type="HSlider" parent="UI/CanvasLayer/VBoxContainer"]
+[node name="SFX" type="HSlider" parent="UI/CanvasLayer2/VBoxContainer"]
 margin_top = 170.0
 margin_right = 300.0
 margin_bottom = 186.0
 value = 100.0
 
-[node name="Volver" type="Button" parent="UI/CanvasLayer/VBoxContainer"]
+[node name="Volver" type="Button" parent="UI/CanvasLayer2/VBoxContainer"]
 margin_top = 214.0
 margin_right = 300.0
 margin_bottom = 234.0
 text = "Volver"
-
-[node name="Label" type="Label" parent="UI/CanvasLayer/VBoxContainer"]
-margin_right = 300.0
-margin_bottom = 14.0
-text = "Opciones"
-align = 1
-valign = 1
-
-[node name="BGMLabel" type="Label" parent="UI/CanvasLayer/VBoxContainer"]
-margin_top = 42.0
-margin_right = 300.0
-margin_bottom = 56.0
-text = "Música"
-align = 1
-valign = 1
-
-[node name="BGM" type="HSlider" parent="UI/CanvasLayer/VBoxContainer"]
-margin_top = 84.0
-margin_right = 300.0
-margin_bottom = 100.0
-
-[node name="SFXLabel" type="Label" parent="UI/CanvasLayer/VBoxContainer"]
-margin_top = 128.0
-margin_right = 300.0
-margin_bottom = 142.0
-text = "SFX"
-align = 1
-valign = 1
-
-[node name="SFX" type="HSlider" parent="UI/CanvasLayer/VBoxContainer"]
-margin_top = 170.0
-margin_right = 300.0
-margin_bottom = 186.0
-
-[node name="Volver" type="Button" parent="UI/CanvasLayer/VBoxContainer"]
-margin_top = 214.0
-margin_right = 300.0
-margin_bottom = 234.0
-text = "Volver"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/CanvasLayer"]
-visible = false
-margin_left = 500.0
-margin_top = 300.0
-margin_right = 800.0
-margin_bottom = 600.0
-custom_constants/separation = 28
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Sprite" type="Sprite" parent="UI"]
-visible = false
-position = Vector2( 643.131, 99.8435 )
-scale = Vector2( 3.02312, 2.21364 )
-texture = ExtResource( 13 )
-
-[node name="CanvasLayer" type="CanvasLayer" parent="UI"]
-
-[node name="Sprite" type="Sprite" parent="UI"]
-visible = false
-position = Vector2( 643.131, 99.8435 )
-scale = Vector2( 3.02312, 2.21364 )
-texture = ExtResource( 13 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 autoplay = true
@@ -349,4 +371,5 @@ script = SubResource( 4 )
 
 [connection signal="accept_pressed" from="GameBoard/Cursor" to="GameBoard" method="_on_Cursor_accept_pressed"]
 [connection signal="moved" from="GameBoard/Cursor" to="GameBoard" method="_on_Cursor_moved"]
-[connection signal="value_changed" from="UI/CanvasLayer/VBoxContainer/BGM" to="UI" method="_on_BGM_value_changed"]
+[connection signal="value_changed" from="UI/CanvasLayer2/VBoxContainer/BGM" to="UI" method="_on_BGM_value_changed"]
+[connection signal="value_changed" from="UI/CanvasLayer2/VBoxContainer/SFX" to="UI" method="_on_SFX_value_changed"]
