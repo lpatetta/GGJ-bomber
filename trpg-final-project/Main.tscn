@@ -219,7 +219,6 @@ func _on_SFX_value_changed(value):
 "
 
 [node name="Main" type="Node2D"]
-position = Vector2( 11.7725, -218.633 )
 
 [node name="Map" parent="." instance=ExtResource( 10 )]
 tile_set = ExtResource( 16 )
