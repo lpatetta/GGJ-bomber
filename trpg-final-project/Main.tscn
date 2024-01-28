@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://GameBoard/Cursor/Cursor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Units/Unit.tscn" type="PackedScene" id=2]
@@ -15,15 +15,11 @@
 [ext_resource path="res://Audio/BGM/track3.wav" type="AudioStream" id=14]
 [ext_resource path="res://Audio/BGM/track2  dafunk.wav" type="AudioStream" id=15]
 [ext_resource path="res://Background/crater_tileset.tres" type="TileSet" id=16]
-[ext_resource path="res://Units/DonOrtiva/donortiva2.png" type="Texture" id=17]
-[ext_resource path="res://Units/DonOrtiva/donortiva3.png" type="Texture" id=18]
 [ext_resource path="res://Units/Descanzord/05.png" type="Texture" id=19]
 [ext_resource path="res://Units/Descanzord/03.png" type="Texture" id=20]
 [ext_resource path="res://Camera.gd" type="Script" id=21]
 [ext_resource path="res://Assets/don ortiva/don ortiva 4.png" type="Texture" id=22]
 [ext_resource path="res://Assets/don ortiva/don ortiva 3.png" type="Texture" id=23]
-[ext_resource path="res://Assets/bb ortiva/bb ortiva 1.png" type="Texture" id=24]
-[ext_resource path="res://Assets/bb ortiva/bb ortiva 2.png" type="Texture" id=25]
 [ext_resource path="res://Assets/sra ortiva/sra ortiva 1.png" type="Texture" id=26]
 [ext_resource path="res://Assets/sra ortiva/sra ortiva 2.png" type="Texture" id=27]
 [ext_resource path="res://Assets/sr ortiva/sr ortiva 2.png" type="Texture" id=28]
@@ -42,13 +38,6 @@
 [ext_resource path="res://Assets/donia ortiva/donia ortiva 4.png" type="Texture" id=41]
 
 [sub_resource type="AnimatedTexture" id=1]
-flags = 4
-
-[sub_resource type="Curve2D" id=1]
-resource_local_to_scene = true
-_data = {
-"points": PoolVector2Array(  )
-}
 
 [sub_resource type="Curve2D" id=2]
 resource_local_to_scene = true
@@ -63,27 +52,11 @@ _data = {
 }
 
 [sub_resource type="AnimatedTexture" id=4]
-
 frames = 3
 frame_0/texture = ExtResource( 20 )
 frame_1/delay_sec = 0.0
 frame_2/texture = ExtResource( 19 )
 frame_2/delay_sec = 0.0
-
-[sub_resource type="AnimatedTexture" id=2]
-flags = 4
-frame_0/texture = ExtResource( 17 )
-
-[sub_resource type="AnimatedTexture" id=3]
-flags = 4
-frame_0/texture = ExtResource( 18 )
-
-[sub_resource type="AnimatedTexture" id=4]
-flags = 4
-frames = 2
-frame_0/texture = ExtResource( 24 )
-frame_1/texture = ExtResource( 25 )
-frame_1/delay_sec = 0.0
 
 [sub_resource type="AnimatedTexture" id=5]
 flags = 4
@@ -282,24 +255,59 @@ position = Vector2( 577.312, 834.23 )
 skin = SubResource( 4 )
 
 [node name="don-ortiva" parent="GameBoard" instance=ExtResource( 2 )]
-position = Vector2( 200.133, 474.265 )
+position = Vector2( 3205, 214 )
 skin = SubResource( 5 )
+skin_offset = Vector2( 10, 30 )
+
+[node name="don-ortiva3" parent="GameBoard" instance=ExtResource( 2 )]
+position = Vector2( 2888, 1195 )
+skin = SubResource( 5 )
+skin_offset = Vector2( 10, 30 )
+
+[node name="don-ortiva2" parent="GameBoard" instance=ExtResource( 2 )]
+position = Vector2( 2342, 214 )
+skin = SubResource( 5 )
+skin_offset = Vector2( 10, 30 )
 
 [node name="sra ortiva" parent="GameBoard" instance=ExtResource( 2 )]
-position = Vector2( 840.896, 235.451 )
+position = Vector2( 4038, 395 )
 skin = SubResource( 6 )
+skin_offset = Vector2( 15, 30 )
 
 [node name="donia-ortiva" parent="GameBoard" instance=ExtResource( 2 )]
-position = Vector2( 440.629, 623.945 )
+position = Vector2( 770, 54 )
 skin = SubResource( 7 )
+skin_offset = Vector2( 30, 35 )
+
+[node name="donia-ortiva2" parent="GameBoard" instance=ExtResource( 2 )]
+position = Vector2( 3189, 848 )
+skin = SubResource( 7 )
+skin_offset = Vector2( 30, 35 )
+
+[node name="donia-ortiva3" parent="GameBoard" instance=ExtResource( 2 )]
+position = Vector2( 160, 388 )
+skin = SubResource( 7 )
+skin_offset = Vector2( 30, 35 )
 
 [node name="poli" parent="GameBoard" instance=ExtResource( 2 )]
-position = Vector2( 358.222, 543.219 )
+position = Vector2( 2879, 525 )
 skin = SubResource( 8 )
+skin_offset = Vector2( 10, 28 )
+
+[node name="poli3" parent="GameBoard" instance=ExtResource( 2 )]
+position = Vector2( 2152, 519 )
+skin = SubResource( 8 )
+skin_offset = Vector2( 10, 28 )
+
+[node name="poli2" parent="GameBoard" instance=ExtResource( 2 )]
+position = Vector2( 1376, 535 )
+skin = SubResource( 8 )
+skin_offset = Vector2( 10, 28 )
 
 [node name="sr ortiva" parent="GameBoard" instance=ExtResource( 2 )]
-position = Vector2( 119.407, 544.9 )
+position = Vector2( 3551, 846 )
 skin = SubResource( 9 )
+skin_offset = Vector2( 24, 29 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
