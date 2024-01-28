@@ -43,6 +43,27 @@
 
 [sub_resource type="AnimatedTexture" id=1]
 flags = 4
+
+[sub_resource type="Curve2D" id=1]
+resource_local_to_scene = true
+_data = {
+"points": PoolVector2Array(  )
+}
+
+[sub_resource type="Curve2D" id=2]
+resource_local_to_scene = true
+_data = {
+"points": PoolVector2Array(  )
+}
+
+[sub_resource type="Curve2D" id=3]
+resource_local_to_scene = true
+_data = {
+"points": PoolVector2Array(  )
+}
+
+[sub_resource type="AnimatedTexture" id=4]
+
 frames = 3
 frame_0/texture = ExtResource( 20 )
 frame_1/delay_sec = 0.0
