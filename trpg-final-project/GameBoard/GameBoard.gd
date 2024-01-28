@@ -187,12 +187,19 @@ func _on_Cursor_accept_pressed(cell: Vector2) -> void:
 
 func _on_Cursor_moved(new_cell: Vector2) -> void:
 	
+	$Cursor._hide();
+	
 	if is_walking:
 		return
+		
+	if _units.has(new_cell):
+		$Cursor._show();
 	
 	if not new_cell in _unit_overlay.get_used_cells_by_id(0) :
 		return
+		
 	
+		
 	if _active_unit and _active_unit.is_selected:
 		var target_cell = find_closest_walkable_cell(new_cell)
 		_unit_path.draw(_active_unit.cell, target_cell)

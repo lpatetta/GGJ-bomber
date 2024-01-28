@@ -19,6 +19,11 @@ var cell := Vector2.ZERO setget set_cell
 
 onready var _timer: Timer = $Timer
 
+func _hide():
+	$Sprite.hide();
+	
+func _show():
+	$Sprite.show();
 
 func _ready() -> void:
 	_timer.wait_time = ui_cooldown
