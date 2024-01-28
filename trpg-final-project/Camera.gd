@@ -5,7 +5,10 @@ var target_node
 export (float) var lerpspeed = 0.05
  
 func _ready():
-		target_node  = get_node(TargetNodepath)
+	var node  = get_node(TargetNodepath)
+	target_node = node.get_node("PathFollow2D/Sprite")
+		
+		
 func _process(delta):
  
 	self.position = lerp(self.position, target_node.get_global_position(), lerpspeed)
