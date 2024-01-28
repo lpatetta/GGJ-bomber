@@ -13,7 +13,10 @@ signal walk_finished
 export var grid: Resource
 ## Texture representing the unit.
 export var skin: Texture setget set_skin
+export var laugh: Texture setget set_laugh
 
+onready var tween = $Tween
+onready var audio = $AudioStreamPlayer2D
 
 ## Distance to which the unit can walk in cells.
 export var move_range := 6
@@ -95,6 +98,10 @@ func set_skin(value: Texture) -> void:
 		yield(self, "ready")
 	_sprite.texture = value
 
+func set_laugh(value: Texture) -> void:
+	laugh = value
+	if not _sprite:
+		yield(self, "ready")
 
 
 func set_skin_offset(value: Vector2) -> void:
@@ -111,13 +118,27 @@ func _set_is_walking(value: bool) -> void:
 func react(reaction):
 	print("REACTED to ", reaction);
 	
-	var tween = get_node("Tween")
+ 
+	$Timer.start()
+	
+
+
+func _on_Timer_timeout():
+	_sprite.texture = laugh
 	
 	tween.interpolate_property($PathFollow2D/Sprite, "modulate:a", 1, 0, 1, trasition_type_in, Tween.EASE_IN_OUT);
-	
-	tween.interpolate_property($PathFollow2D/Sprite, "scale", starting_scale,target_scale, tween_duration,
+	tween.interpolate_property($PathFollow2D/Sprite, "scale", starting_scale, target_scale, tween_duration/2,
 		trasition_type_in, Tween.EASE_IN_OUT)
-	tween.interpolate_callback(self, tween_duration, "_return_scale");
+	#tween.interpolate_callback(self, tween_duration, "_return_scale");
 	tween.start();
 	
+	audio.play()
+	$TimerLaugh.start()
 	
+	
+	pass # Replace with function body.
+
+
+func _on_TimerLaugh_timeout():
+	audio.stop()
+	pass # Replace with function body.

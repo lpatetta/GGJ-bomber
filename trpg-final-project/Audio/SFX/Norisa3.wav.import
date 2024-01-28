@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Norisa3.wav-616b0fb52864d5453e647eabf308f640.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/Norisa3.wav"
+dest_files=[ "res://.import/Norisa3.wav-616b0fb52864d5453e647eabf308f640.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
