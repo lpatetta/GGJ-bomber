@@ -1,5 +1,4 @@
 [gd_scene load_steps=32 format=2]
-[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://GameBoard/Cursor/Cursor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Units/Unit.tscn" type="PackedScene" id=2]
