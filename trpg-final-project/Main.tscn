@@ -18,32 +18,25 @@
 [ext_resource path="res://Background/crater_tileset.tres" type="TileSet" id=16]
 [ext_resource path="res://Assets/descanzord/lila/04.png" type="Texture" id=17]
 [ext_resource path="res://Assets/descanzord/lila/05.png" type="Texture" id=18]
-[ext_resource path="res://Units/Descanzord/05.png" type="Texture" id=19]
-[ext_resource path="res://Units/Descanzord/03.png" type="Texture" id=20]
+[ext_resource path="res://Assets/bb ortiva/bb ortiva 1.png" type="Texture" id=19]
 [ext_resource path="res://Camera.gd" type="Script" id=21]
 [ext_resource path="res://Assets/don ortiva/don ortiva 4.png" type="Texture" id=22]
 [ext_resource path="res://Assets/don ortiva/don ortiva 3.png" type="Texture" id=23]
 [ext_resource path="res://VideosMemes/Voicy_rick-astley.ogv" type="VideoStream" id=24]
 [ext_resource path="res://Assets/descanzord/amarillo/03.png" type="Texture" id=25]
+[ext_resource path="res://Assets/bb ortiva/bb ortiva 2.png" type="Texture" id=53]
 [ext_resource path="res://Assets/sra ortiva/sra ortiva 1.png" type="Texture" id=26]
 [ext_resource path="res://Assets/sra ortiva/sra ortiva 2.png" type="Texture" id=27]
 [ext_resource path="res://Assets/sr ortiva/sr ortiva 2.png" type="Texture" id=28]
 [ext_resource path="res://Assets/sr ortiva/sr ortiva 4.png" type="Texture" id=29]
 [ext_resource path="res://Assets/sr ortiva/sr ortiva 3.png" type="Texture" id=30]
 [ext_resource path="res://Assets/sr ortiva/sr ortiva 1.png" type="Texture" id=31]
-[ext_resource path="res://Assets/poli bh/poli bh 5.png" type="Texture" id=32]
-[ext_resource path="res://Assets/poli bh/poli bh 6.png" type="Texture" id=33]
-[ext_resource path="res://Assets/poli bh/poli bh 4.png" type="Texture" id=34]
-[ext_resource path="res://Assets/poli bh/poli bh 1.png" type="Texture" id=35]
-[ext_resource path="res://Assets/poli bh/poli bh 2.png" type="Texture" id=36]
-[ext_resource path="res://Assets/poli bh/poli bh 3.png" type="Texture" id=37]
 [ext_resource path="res://Assets/donia ortiva/donia ortiva 2.png" type="Texture" id=38]
 [ext_resource path="res://Assets/donia ortiva/donia ortiva 1.png" type="Texture" id=39]
 [ext_resource path="res://Assets/donia ortiva/donia ortiva 3.png" type="Texture" id=40]
 [ext_resource path="res://Assets/donia ortiva/donia ortiva 4.png" type="Texture" id=41]
 [ext_resource path="res://Assets/descanzord/naranja/05.png" type="Texture" id=42]
 [ext_resource path="res://Assets/descanzord/cyan/03.png" type="Texture" id=43]
-[ext_resource path="res://Assets/descanzord/amarillo/04.png" type="Texture" id=44]
 [ext_resource path="res://Assets/descanzord/verde/04.png" type="Texture" id=45]
 [ext_resource path="res://Assets/descanzord/cyan/04.png" type="Texture" id=46]
 [ext_resource path="res://Assets/descanzord/naranja/03.png" type="Texture" id=47]
@@ -57,7 +50,7 @@
 flags = 4
 frames = 3
 frame_0/texture = ExtResource( 25 )
-frame_1/texture = ExtResource( 44 )
+frame_1/texture = ExtResource( 25 )
 frame_1/delay_sec = 0.0
 frame_2/texture = ExtResource( 51 )
 frame_2/delay_sec = 0.0
@@ -100,12 +93,10 @@ frame_2/delay_sec = 0.0
 
 [sub_resource type="AnimatedTexture" id=6]
 flags = 4
-frames = 3
-frame_0/texture = ExtResource( 20 )
-frame_1/texture = ExtResource( 44 )
+frames = 2
+frame_0/texture = ExtResource( 19 )
+frame_1/texture = ExtResource( 25 )
 frame_1/delay_sec = 0.0
-frame_2/texture = ExtResource( 19 )
-frame_2/delay_sec = 0.0
 
 [sub_resource type="AnimatedTexture" id=7]
 flags = 4
@@ -138,18 +129,10 @@ frame_3/delay_sec = 0.0
 
 [sub_resource type="AnimatedTexture" id=10]
 flags = 4
-frames = 6
-frame_0/texture = ExtResource( 35 )
-frame_1/texture = ExtResource( 36 )
+frames = 2
+frame_0/texture = ExtResource( 19 )
+frame_1/texture = ExtResource( 25 )
 frame_1/delay_sec = 0.0
-frame_2/texture = ExtResource( 37 )
-frame_2/delay_sec = 0.0
-frame_3/texture = ExtResource( 34 )
-frame_3/delay_sec = 0.0
-frame_4/texture = ExtResource( 32 )
-frame_4/delay_sec = 0.0
-frame_5/texture = ExtResource( 33 )
-frame_5/delay_sec = 0.0
 
 [sub_resource type="AnimatedTexture" id=11]
 flags = 4

@@ -1,0 +1,141 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Assets/don ortiva risa/don ortiva risa 2.png" type="Texture" id=1]
+[ext_resource path="res://Assets/don ortiva risa/don ortiva risa 1.png" type="Texture" id=2]
+[ext_resource path="res://Assets/sr ortiva/sr ortiva 3.png" type="Texture" id=3]
+[ext_resource path="res://UI/logo.png" type="Texture" id=4]
+[ext_resource path="res://Assets/donia ortiva/donia ortiva 1.png" type="Texture" id=5]
+[ext_resource path="res://Assets/donia ortiva/donia ortiva 2.png" type="Texture" id=6]
+[ext_resource path="res://Assets/sr ortiva/sr ortiva 1.png" type="Texture" id=7]
+[ext_resource path="res://Assets/donia ortiva/donia ortiva 4.png" type="Texture" id=8]
+[ext_resource path="res://Assets/sr ortiva/sr ortiva 4.png" type="Texture" id=9]
+[ext_resource path="res://Assets/sr ortiva/sr ortiva 2.png" type="Texture" id=10]
+[ext_resource path="res://Assets/donia ortiva/donia ortiva 3.png" type="Texture" id=11]
+[ext_resource path="res://Audio/BGM/track3.wav" type="AudioStream" id=12]
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends Node2D
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+func _on_Salir_pressed():
+	get_tree().quit()
+	pass # Replace with function body.
+
+
+func _on_Jugar_pressed():
+	get_tree().change_scene(\"res://Main.tscn\")
+	pass # Replace with function body.
+"
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.72549, 0.576471, 0.576471, 1 )
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 11 ), ExtResource( 8 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 10 ), ExtResource( 3 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="MainMenu" type="Node2D"]
+script = SubResource( 5 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+margin_right = 1284.0
+margin_bottom = 724.0
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+margin_left = 926.0
+margin_top = 473.0
+margin_right = 1252.0
+margin_bottom = 652.0
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Jugar" type="Button" parent="CanvasLayer/VBoxContainer"]
+margin_right = 326.0
+margin_bottom = 20.0
+text = "Jugar"
+
+[node name="Opciones" type="Button" parent="CanvasLayer/VBoxContainer"]
+margin_top = 70.0
+margin_right = 326.0
+margin_bottom = 90.0
+text = "Opciones"
+
+[node name="Salir" type="Button" parent="CanvasLayer/VBoxContainer"]
+margin_top = 140.0
+margin_right = 326.0
+margin_bottom = 160.0
+text = "Salir"
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 400.694, 350.776 )
+scale = Vector2( 0.654179, 0.674419 )
+texture = ExtResource( 4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer"]
+position = Vector2( 725.732, 176.632 )
+scale = Vector2( 0.512807, 0.578518 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="CanvasLayer"]
+position = Vector2( 951.057, 176.632 )
+scale = Vector2( 0.512807, 0.578518 )
+frames = SubResource( 2 )
+playing = true
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="CanvasLayer"]
+position = Vector2( 1087.28, 173.081 )
+scale = Vector2( 0.512807, 0.578518 )
+frames = SubResource( 3 )
+playing = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+autoplay = true
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Jugar" to="." method="_on_Jugar_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Salir" to="." method="_on_Salir_pressed"]
