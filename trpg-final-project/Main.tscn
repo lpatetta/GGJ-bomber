@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://GameBoard/Cursor/Cursor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Units/Unit.tscn" type="PackedScene" id=2]
@@ -51,27 +51,7 @@
 
 [sub_resource type="AnimatedTexture" id=1]
 
-[sub_resource type="Curve2D" id=2]
-resource_local_to_scene = true
-_data = {
-"points": PoolVector2Array(  )
-}
-
-[sub_resource type="Curve2D" id=3]
-resource_local_to_scene = true
-_data = {
-"points": PoolVector2Array(  )
-}
-
-[sub_resource type="AnimatedTexture" id=4]
-frames = 3
-frame_0/texture = ExtResource( 20 )
-frame_1/texture = ExtResource( 44 )
-frame_1/delay_sec = 0.0
-frame_2/texture = ExtResource( 19 )
-frame_2/delay_sec = 0.0
-
-[sub_resource type="AnimatedTexture" id=12]
+[sub_resource type="AnimatedTexture" id=2]
 flags = 4
 frames = 3
 frame_0/texture = ExtResource( 43 )
@@ -80,7 +60,7 @@ frame_1/delay_sec = 0.0
 frame_2/texture = ExtResource( 13 )
 frame_2/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=13]
+[sub_resource type="AnimatedTexture" id=3]
 flags = 4
 frames = 3
 frame_0/texture = ExtResource( 49 )
@@ -89,7 +69,7 @@ frame_1/delay_sec = 0.0
 frame_2/texture = ExtResource( 18 )
 frame_2/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=14]
+[sub_resource type="AnimatedTexture" id=4]
 flags = 4
 frames = 3
 frame_0/texture = ExtResource( 47 )
@@ -98,7 +78,7 @@ frame_1/delay_sec = 0.0
 frame_2/texture = ExtResource( 42 )
 frame_2/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=15]
+[sub_resource type="AnimatedTexture" id=5]
 flags = 4
 frames = 3
 frame_0/texture = ExtResource( 7 )
@@ -107,14 +87,16 @@ frame_1/delay_sec = 0.0
 frame_2/texture = ExtResource( 48 )
 frame_2/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=4]
+[sub_resource type="AnimatedTexture" id=6]
 flags = 4
-frames = 2
-frame_0/texture = ExtResource( 24 )
-frame_1/texture = ExtResource( 25 )
+frames = 3
+frame_0/texture = ExtResource( 20 )
+frame_1/texture = ExtResource( 44 )
 frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 19 )
+frame_2/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=5]
+[sub_resource type="AnimatedTexture" id=7]
 flags = 4
 frames = 4
 frame_0/texture = ExtResource( 8 )
@@ -125,14 +107,14 @@ frame_2/delay_sec = 0.0
 frame_3/texture = ExtResource( 22 )
 frame_3/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=6]
+[sub_resource type="AnimatedTexture" id=8]
 flags = 4
 frames = 2
 frame_0/texture = ExtResource( 26 )
 frame_1/texture = ExtResource( 27 )
 frame_1/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=7]
+[sub_resource type="AnimatedTexture" id=9]
 flags = 4
 frames = 4
 frame_0/texture = ExtResource( 39 )
@@ -143,7 +125,7 @@ frame_2/delay_sec = 0.0
 frame_3/texture = ExtResource( 41 )
 frame_3/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=8]
+[sub_resource type="AnimatedTexture" id=10]
 flags = 4
 frames = 6
 frame_0/texture = ExtResource( 35 )
@@ -158,7 +140,7 @@ frame_4/delay_sec = 0.0
 frame_5/texture = ExtResource( 33 )
 frame_5/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=9]
+[sub_resource type="AnimatedTexture" id=11]
 flags = 4
 frames = 4
 frame_0/texture = ExtResource( 31 )
@@ -169,7 +151,7 @@ frame_2/delay_sec = 0.0
 frame_3/texture = ExtResource( 29 )
 frame_3/delay_sec = 0.0
 
-[sub_resource type="GDScript" id=10]
+[sub_resource type="GDScript" id=12]
 script/source = "extends AudioStreamPlayer
 
 
@@ -198,7 +180,7 @@ func random_bgm():
 #	pass
 "
 
-[sub_resource type="GDScript" id=11]
+[sub_resource type="GDScript" id=13]
 script/source = "extends Node
 
 
@@ -297,7 +279,7 @@ target_scale = Vector2( 1.3, 1.5 )
 tween_duration = 0.4
 trasition_type_in = 2
 trasition_type_out = 2
-skins = [ SubResource( 1 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ]
+skins = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ]
 
 [node name="Camera" type="Camera2D" parent="GameBoard"]
 current = true
@@ -308,71 +290,71 @@ TargetNodepath = NodePath("../Player")
 
 [node name="bb" parent="GameBoard" instance=ExtResource( 2 )]
 position = Vector2( 577.312, 834.23 )
-skin = SubResource( 4 )
+skin = SubResource( 6 )
 
 [node name="don-ortiva" parent="GameBoard" instance=ExtResource( 2 )]
 position = Vector2( 3205, 214 )
-skin = SubResource( 5 )
+skin = SubResource( 7 )
 skin_offset = Vector2( 10, 30 )
 
 [node name="don-ortiva3" parent="GameBoard" instance=ExtResource( 2 )]
 position = Vector2( 2888, 1195 )
-skin = SubResource( 5 )
+skin = SubResource( 7 )
 skin_offset = Vector2( 10, 30 )
 
 [node name="don-ortiva2" parent="GameBoard" instance=ExtResource( 2 )]
 position = Vector2( 2342, 214 )
-skin = SubResource( 5 )
+skin = SubResource( 7 )
 skin_offset = Vector2( 10, 30 )
 
 [node name="sra ortiva" parent="GameBoard" instance=ExtResource( 2 )]
 position = Vector2( 4038, 395 )
-skin = SubResource( 6 )
+skin = SubResource( 8 )
 skin_offset = Vector2( 15, 30 )
 
 [node name="donia-ortiva" parent="GameBoard" instance=ExtResource( 2 )]
 position = Vector2( 770, 54 )
-skin = SubResource( 7 )
+skin = SubResource( 9 )
 skin_offset = Vector2( 30, 35 )
 
 [node name="donia-ortiva2" parent="GameBoard" instance=ExtResource( 2 )]
 position = Vector2( 3189, 848 )
-skin = SubResource( 7 )
+skin = SubResource( 9 )
 skin_offset = Vector2( 30, 35 )
 
 [node name="donia-ortiva3" parent="GameBoard" instance=ExtResource( 2 )]
 position = Vector2( 160, 388 )
-skin = SubResource( 7 )
+skin = SubResource( 9 )
 skin_offset = Vector2( 30, 35 )
 
 [node name="poli" parent="GameBoard" instance=ExtResource( 2 )]
 position = Vector2( 2879, 525 )
-skin = SubResource( 8 )
+skin = SubResource( 10 )
 skin_offset = Vector2( 10, 28 )
 
 [node name="poli3" parent="GameBoard" instance=ExtResource( 2 )]
 position = Vector2( 2152, 519 )
-skin = SubResource( 8 )
+skin = SubResource( 10 )
 skin_offset = Vector2( 10, 28 )
 
 [node name="poli2" parent="GameBoard" instance=ExtResource( 2 )]
 position = Vector2( 1376, 535 )
-skin = SubResource( 8 )
+skin = SubResource( 10 )
 skin_offset = Vector2( 10, 28 )
 
 [node name="sr ortiva" parent="GameBoard" instance=ExtResource( 2 )]
 position = Vector2( 3551, 846 )
-skin = SubResource( 9 )
+skin = SubResource( 11 )
 skin_offset = Vector2( 24, 29 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
 autoplay = true
-script = SubResource( 10 )
+script = SubResource( 12 )
 bgm = [ null, ExtResource( 15 ), ExtResource( 14 ) ]
 
 [node name="UI" type="Node" parent="."]
-script = SubResource( 11 )
+script = SubResource( 13 )
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="UI"]
 
@@ -436,9 +418,6 @@ text = "Volver"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 autoplay = true
-
-[node name="UI" type="Node" parent="."]
-script = SubResource( 1 )
 
 [connection signal="accept_pressed" from="GameBoard/Cursor" to="GameBoard" method="_on_Cursor_accept_pressed"]
 [connection signal="moved" from="GameBoard/Cursor" to="GameBoard" method="_on_Cursor_moved"]
