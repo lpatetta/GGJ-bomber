@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://GameBoard/Cursor/Cursor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Units/Unit.tscn" type="PackedScene" id=2]
@@ -18,7 +18,8 @@
 [ext_resource path="res://Background/crater_tileset.tres" type="TileSet" id=16]
 [ext_resource path="res://Units/DonOrtiva/donortiva2.png" type="Texture" id=17]
 [ext_resource path="res://Units/DonOrtiva/donortiva3.png" type="Texture" id=18]
-[ext_resource path="res://Units/DonOrtiva/donortiva1.png" type="Texture" id=19]
+[ext_resource path="res://Units/Descanzord/05.png" type="Texture" id=19]
+[ext_resource path="res://Units/Descanzord/03.png" type="Texture" id=20]
 
 [sub_resource type="Curve2D" id=1]
 resource_local_to_scene = true
@@ -39,8 +40,11 @@ _data = {
 }
 
 [sub_resource type="AnimatedTexture" id=4]
-flags = 4
-frame_0/texture = ExtResource( 19 )
+frames = 3
+frame_0/texture = ExtResource( 20 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 19 )
+frame_2/delay_sec = 0.0
 
 [sub_resource type="AnimatedTexture" id=5]
 flags = 4

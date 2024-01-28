@@ -17,6 +17,13 @@ func _ready():
 	if skins:
 		set_skin(skins[_current_skin])
 
+func _process(delta):
+	var mouse_position = get_local_mouse_position()
+	if $PathFollow2D/Sprite.position.x > mouse_position.x:
+		$PathFollow2D/Sprite.set_flip_h(true)
+	elif $PathFollow2D/Sprite.position.x < mouse_position.x:
+		$PathFollow2D/Sprite.set_flip_h(false)
+
 func _unhandled_input(event: InputEvent) -> void:
 	if _is_changing_skin and event.is_action_released("activate"):
 		_set_next_skin();
