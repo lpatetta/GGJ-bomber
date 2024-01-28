@@ -124,9 +124,11 @@ func _move_main_character(new_cell:Vector2)->void:
 	_select_unit(_active_unit.cell) #reselect main unit
 	is_walking = false;
 	if _interacted_npc:
+		$AudioStreamPlayer.stop();
 		$Camera/VideoPlayer/PanelContainer._show_video();
 		yield($Camera/VideoPlayer/PanelContainer, "video_finished")
 		_interacted_npc.react( _active_unit._current_skin );
+		$AudioStreamPlayer.play();
 		
 	
 

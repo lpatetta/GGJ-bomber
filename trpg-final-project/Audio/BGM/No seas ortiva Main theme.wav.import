@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/No seas ortiva Main theme.wav-612bb5f89e84f9f901124a0e1b98bb3a.sample"
+
+[deps]
+
+source_file="res://Audio/BGM/No seas ortiva Main theme.wav"
+dest_files=[ "res://.import/No seas ortiva Main theme.wav-612bb5f89e84f9f901124a0e1b98bb3a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

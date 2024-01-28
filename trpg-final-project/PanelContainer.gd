@@ -6,6 +6,9 @@ var target_scale:Vector2;
 var start_scale
 
 
+export (Array, VideoStream) var streams
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	start_scale = Vector2(0.2, 0.2);
@@ -22,17 +25,17 @@ func _process(delta):
 	 
 
 func _show_video():
+	
+	$VideoPlayer.stream = streams[ randi() % streams.size() ]
+	
 	rect_scale = start_scale
 	was_playing = true
 	visible = true;
 	$VideoPlayer.play();
 	$Timer.start()
-	
-	
-	
-
 
 func _on_Timer_timeout():
 	emit_signal("video_finished")
+	$VideoPlayer.stop();
 	visible = false
 	was_playing = false
