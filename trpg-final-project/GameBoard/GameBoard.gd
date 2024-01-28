@@ -181,6 +181,9 @@ func _on_Cursor_accept_pressed(cell: Vector2) -> void:
 
 func _on_Cursor_moved(new_cell: Vector2) -> void:
 	
+	if is_walking:
+		return
+	
 	if not new_cell in _unit_overlay.get_used_cells_by_id(0) :
 		return
 	
