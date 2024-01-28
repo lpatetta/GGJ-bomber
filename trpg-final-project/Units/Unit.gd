@@ -8,6 +8,7 @@ extends Path2D
 ## Emitted when the unit reached the end of a path along which it was walking.
 signal walk_finished
 
+
 ## Shared resource of type Grid, used to calculate map coordinates.
 export var grid: Resource
 ## Texture representing the unit.
