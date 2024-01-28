@@ -115,18 +115,29 @@ func _flood_fill(cell: Vector2, max_distance: int) -> Array:
 	return array
 
 
+func _move_main_character(new_cell:Vector2)->void:
+	_active_unit.walk_along(_unit_path.current_path)
+	is_walking = true;
+	yield(_active_unit, "walk_finished")
+	_select_unit(_active_unit.cell) #reselect main unit
+	is_walking = false;
+	if _interacted_npc:
+		_interacted_npc.react( _active_unit._current_skin );
+
 func _move_active_unit(new_cell: Vector2) -> void:
 	#print("is_occupied(new_cell)", is_occupied(new_cell) );
 	#print("not new_cell in _walkable_cells", not new_cell in _walkable_cells);
 	
 	if is_occupied(new_cell) or not new_cell in _walkable_cells:
 		return
+		
 	_units.erase(_active_unit.cell)
 	_units[new_cell] = _active_unit
-	#_deselect_active_unit()
+	
 	_active_unit.walk_along(_unit_path.current_path)
 	is_walking = true;
 	yield(_active_unit, "walk_finished")
+	
 	_select_unit(_active_unit.cell) #reselect main unit
 	is_walking = false;
 	if _interacted_npc:
@@ -148,7 +159,7 @@ func _select_unit(cell: Vector2) -> void:
 	#_unit_overlay.draw(_walkable_cells)
 	_unit_path.initialize(_walkable_cells)
 	
-func _interact_npc(cell:Vector2) -> void:
+func _set_interacted_npc(cell:Vector2) -> void:
 	if _units.has(cell):
 		_interacted_npc = _units[cell]
 	else:
@@ -170,13 +181,8 @@ func _on_Cursor_accept_pressed(cell: Vector2) -> void:
 	if is_walking:
 		return
 		
-	_interact_npc(cell)
-	_move_active_unit(find_closest_walkable_cell(cell))
-		 
-#	if not _active_unit:
-#		_select_unit(cell)
-#	elif _active_unit.is_selected:
-#		_move_active_unit(find_closest_walkable_cell(cell))
+	_set_interacted_npc(cell)
+	_move_main_character(find_closest_walkable_cell(cell))
 
 
 func _on_Cursor_moved(new_cell: Vector2) -> void:
