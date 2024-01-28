@@ -70,6 +70,7 @@ config/icon="res://icon.png"
 
 window/size/width=1280
 window/size/height=720
+window/size/fullscreen=true
 
 [input]
 
@@ -108,3 +109,7 @@ activate={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true

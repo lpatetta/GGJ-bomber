@@ -114,35 +114,35 @@ frame_0/texture = ExtResource( 58 )
 frame_1/texture = ExtResource( 59 )
 frame_1/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=18]
+[sub_resource type="AnimatedTexture" id=8]
 flags = 4
 frames = 2
 frame_0/texture = ExtResource( 58 )
 frame_1/texture = ExtResource( 59 )
 frame_1/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=19]
+[sub_resource type="AnimatedTexture" id=9]
 flags = 4
 frames = 2
 frame_0/texture = ExtResource( 35 )
 frame_1/texture = ExtResource( 36 )
 frame_1/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=8]
+[sub_resource type="AnimatedTexture" id=10]
 flags = 4
 frames = 2
 frame_0/texture = ExtResource( 26 )
 frame_1/texture = ExtResource( 27 )
 frame_1/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=20]
+[sub_resource type="AnimatedTexture" id=11]
 flags = 4
 frames = 2
 frame_0/texture = ExtResource( 57 )
 frame_1/texture = ExtResource( 56 )
 frame_1/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=9]
+[sub_resource type="AnimatedTexture" id=12]
 flags = 4
 frames = 4
 frame_0/texture = ExtResource( 39 )
@@ -153,56 +153,56 @@ frame_2/delay_sec = 0.0
 frame_3/texture = ExtResource( 41 )
 frame_3/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=10]
-flags = 4
-frames = 2
-frame_0/texture = ExtResource( 35 )
-frame_1/texture = ExtResource( 36 )
-frame_1/delay_sec = 0.0
-
-[sub_resource type="AnimatedTexture" id=11]
-flags = 4
-frames = 2
-frame_0/texture = ExtResource( 35 )
-frame_1/texture = ExtResource( 36 )
-frame_1/delay_sec = 0.0
-
-[sub_resource type="AnimatedTexture" id=12]
-flags = 4
-frames = 2
-frame_0/texture = ExtResource( 35 )
-frame_1/texture = ExtResource( 36 )
-frame_1/delay_sec = 0.0
-
-[sub_resource type="AnimatedTexture" id=21]
-flags = 4
-frames = 2
-frame_0/texture = ExtResource( 35 )
-frame_1/texture = ExtResource( 36 )
-frame_1/delay_sec = 0.0
-
-[sub_resource type="AnimatedTexture" id=22]
-flags = 4
-frames = 2
-frame_0/texture = ExtResource( 35 )
-frame_1/texture = ExtResource( 36 )
-frame_1/delay_sec = 0.0
-
-[sub_resource type="AnimatedTexture" id=23]
-flags = 4
-frames = 2
-frame_0/texture = ExtResource( 35 )
-frame_1/texture = ExtResource( 36 )
-frame_1/delay_sec = 0.0
-
 [sub_resource type="AnimatedTexture" id=13]
+flags = 4
+frames = 2
+frame_0/texture = ExtResource( 35 )
+frame_1/texture = ExtResource( 36 )
+frame_1/delay_sec = 0.0
+
+[sub_resource type="AnimatedTexture" id=14]
+flags = 4
+frames = 2
+frame_0/texture = ExtResource( 35 )
+frame_1/texture = ExtResource( 36 )
+frame_1/delay_sec = 0.0
+
+[sub_resource type="AnimatedTexture" id=15]
+flags = 4
+frames = 2
+frame_0/texture = ExtResource( 35 )
+frame_1/texture = ExtResource( 36 )
+frame_1/delay_sec = 0.0
+
+[sub_resource type="AnimatedTexture" id=16]
+flags = 4
+frames = 2
+frame_0/texture = ExtResource( 35 )
+frame_1/texture = ExtResource( 36 )
+frame_1/delay_sec = 0.0
+
+[sub_resource type="AnimatedTexture" id=17]
+flags = 4
+frames = 2
+frame_0/texture = ExtResource( 35 )
+frame_1/texture = ExtResource( 36 )
+frame_1/delay_sec = 0.0
+
+[sub_resource type="AnimatedTexture" id=18]
+flags = 4
+frames = 2
+frame_0/texture = ExtResource( 35 )
+frame_1/texture = ExtResource( 36 )
+frame_1/delay_sec = 0.0
+
+[sub_resource type="AnimatedTexture" id=19]
 flags = 4
 frames = 2
 frame_0/texture = ExtResource( 19 )
 frame_1/texture = ExtResource( 53 )
 frame_1/delay_sec = 0.0
 
-[sub_resource type="GDScript" id=14]
+[sub_resource type="GDScript" id=20]
 script/source = "extends AudioStreamPlayer
 
 
@@ -234,7 +234,7 @@ func resume_audio():
 	audio_player.play()
 "
 
-[sub_resource type="GDScript" id=15]
+[sub_resource type="GDScript" id=21]
 script/source = "extends Node
 
 
@@ -304,11 +304,11 @@ func _on_SFX_value_changed(value):
 	pass # Replace with function body.
 "
 
-[sub_resource type="StyleBoxTexture" id=16]
+[sub_resource type="StyleBoxTexture" id=22]
 region_rect = Rect2( 0, 0, 2048, 1 )
 
-[sub_resource type="StyleBoxTexture" id=17]
-texture = SubResource( 12 )
+[sub_resource type="StyleBoxTexture" id=23]
+texture = SubResource( 15 )
 region_rect = Rect2( 0, 0, 2048, 1 )
 
 [node name="Main" type="Node2D"]
@@ -381,71 +381,71 @@ skin_offset = Vector2( 10, 30 )
 [node name="don-ortiva3" parent="GameBoard" instance=ExtResource( 2 )]
 position = Vector2( 2888, 1195 )
 skin = SubResource( 6 )
-laugh = SubResource( 18 )
+laugh = SubResource( 8 )
 skin_offset = Vector2( 10, 30 )
 
 [node name="don-ortiva2" parent="GameBoard" instance=ExtResource( 2 )]
 position = Vector2( 2342, 214 )
 skin = SubResource( 6 )
-laugh = SubResource( 19 )
+laugh = SubResource( 9 )
 skin_offset = Vector2( 10, 30 )
 
 [node name="sra ortiva" parent="GameBoard" instance=ExtResource( 2 )]
 position = Vector2( 4038, 395 )
-skin = SubResource( 8 )
-laugh = SubResource( 20 )
+skin = SubResource( 10 )
+laugh = SubResource( 11 )
 skin_offset = Vector2( 15, 30 )
 
 [node name="donia-ortiva" parent="GameBoard" instance=ExtResource( 2 )]
 position = Vector2( 770, 54 )
-skin = SubResource( 9 )
-laugh = SubResource( 10 )
+skin = SubResource( 12 )
+laugh = SubResource( 13 )
 skin_offset = Vector2( 30, 35 )
 tween_duration = 2.0
 
 [node name="donia-ortiva2" parent="GameBoard" instance=ExtResource( 2 )]
 position = Vector2( 3189, 848 )
-skin = SubResource( 9 )
-laugh = SubResource( 11 )
+skin = SubResource( 12 )
+laugh = SubResource( 14 )
 skin_offset = Vector2( 30, 35 )
 
 [node name="donia-ortiva3" parent="GameBoard" instance=ExtResource( 2 )]
 position = Vector2( 160, 388 )
-skin = SubResource( 9 )
-laugh = SubResource( 12 )
+skin = SubResource( 12 )
+laugh = SubResource( 15 )
 skin_offset = Vector2( 30, 35 )
 
 [node name="poli" parent="GameBoard" instance=ExtResource( 2 )]
 position = Vector2( 2879, 525 )
-skin = SubResource( 10 )
-laugh = SubResource( 21 )
+skin = SubResource( 13 )
+laugh = SubResource( 16 )
 skin_offset = Vector2( 10, 28 )
 
 [node name="poli3" parent="GameBoard" instance=ExtResource( 2 )]
 position = Vector2( 2152, 519 )
-skin = SubResource( 10 )
-laugh = SubResource( 22 )
+skin = SubResource( 13 )
+laugh = SubResource( 17 )
 skin_offset = Vector2( 10, 28 )
 
 [node name="poli2" parent="GameBoard" instance=ExtResource( 2 )]
 position = Vector2( 1376, 535 )
-skin = SubResource( 10 )
-laugh = SubResource( 23 )
+skin = SubResource( 13 )
+laugh = SubResource( 18 )
 skin_offset = Vector2( 10, 28 )
 
 [node name="sr ortiva" parent="GameBoard" instance=ExtResource( 2 )]
 position = Vector2( 3551, 846 )
-skin = SubResource( 13 )
+skin = SubResource( 19 )
 skin_offset = Vector2( 24, 29 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GameBoard"]
 stream = ExtResource( 34 )
 autoplay = true
-script = SubResource( 14 )
+script = SubResource( 20 )
 bgm = [ null, ExtResource( 15 ), ExtResource( 14 ) ]
 
 [node name="UI" type="Node" parent="."]
-script = SubResource( 15 )
+script = SubResource( 21 )
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="UI"]
 
@@ -512,8 +512,8 @@ margin_left = 320.0
 margin_top = 40.0
 margin_right = 920.0
 margin_bottom = 79.0
-custom_styles/fg = SubResource( 16 )
-custom_styles/bg = SubResource( 17 )
+custom_styles/fg = SubResource( 22 )
+custom_styles/bg = SubResource( 23 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
 value = 100.0

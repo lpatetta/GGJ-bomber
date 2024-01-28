@@ -16,6 +16,7 @@ onready var _unit_path: UnitPath = $UnitPath
 var is_walking = false;
 
 func _ready() -> void:
+	#get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_KEEP, resolution_list[current_res_index])
 	_reinitialize()
 
 
