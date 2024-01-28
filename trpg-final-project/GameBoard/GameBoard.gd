@@ -58,7 +58,8 @@ func _get_walkables(cell: Vector2, max_distance: int)-> Array:
 	# FALTA AGREGAR PERSONAJES AL ARRAY
 	for u in _units:
 		if u in array:
-			array.remove( array.find(u) )
+			#array.remove( array.find(u) )
+			print()
 	
 	
 	var stack := [cell]
@@ -115,8 +116,8 @@ func _flood_fill(cell: Vector2, max_distance: int) -> Array:
 
 
 func _move_active_unit(new_cell: Vector2) -> void:
-	print("is_occupied(new_cell)", is_occupied(new_cell) );
-	print("not new_cell in _walkable_cells", not new_cell in _walkable_cells);
+	#print("is_occupied(new_cell)", is_occupied(new_cell) );
+	#print("not new_cell in _walkable_cells", not new_cell in _walkable_cells);
 	
 	if is_occupied(new_cell) or not new_cell in _walkable_cells:
 		return
@@ -178,7 +179,11 @@ func _on_Cursor_accept_pressed(cell: Vector2) -> void:
 #		_move_active_unit(find_closest_walkable_cell(cell))
 
 
-func _on_Cursor_moved(new_cell: Vector2) -> void:		
+func _on_Cursor_moved(new_cell: Vector2) -> void:
+	
+	if not new_cell in _unit_overlay.get_used_cells_by_id(0) :
+		return
+	
 	if _active_unit and _active_unit.is_selected:
 		var target_cell = find_closest_walkable_cell(new_cell)
 		_unit_path.draw(_active_unit.cell, target_cell)
