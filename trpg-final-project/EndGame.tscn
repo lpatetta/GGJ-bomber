@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Audio/BGM/phantom Gameover.wav" type="AudioStream" id=1]
+[ext_resource path="res://Assets/poli bh/poli bh 2.png" type="Texture" id=2]
+[ext_resource path="res://UI/logo.png" type="Texture" id=4]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+func _on_Salir_pressed():
+	get_tree().quit()
+	pass # Replace with function body.
+
+
+func _on_Jugar_pressed():
+	get_tree().change_scene(\"res://Main.tscn\")
+	pass # Replace with function body.
+"
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.72549, 0.576471, 0.576471, 1 )
+
+[node name="MainMenu" type="Node2D"]
+script = SubResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+margin_right = 1284.0
+margin_bottom = 724.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="poli bh 2" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 1044.16, 418.811 )
+scale = Vector2( 1.49928, 1.49928 )
+texture = ExtResource( 2 )
+
+[node name="poli bh 3" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 263.736, 393.866 )
+scale = Vector2( -1.60618, 1.60618 )
+texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 556.87, -200.513 )
+scale = Vector2( 1.28762, 1.34275 )
+texture = ExtResource( 4 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
