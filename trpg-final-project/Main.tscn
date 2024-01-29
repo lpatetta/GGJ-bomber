@@ -213,6 +213,8 @@ tile_data = PoolIntArray(  )
 [node name="Player" parent="GameBoard" instance=ExtResource( 12 )]
 position = Vector2( 837.207, 820.831 )
 grid = ExtResource( 4 )
+skin_offset = Vector2( 30, 8 )
+move_speed = 100.0
 is_main = true
 starting_scale = Vector2( 0.2, 0.2 )
 target_scale = Vector2( 0.5, 0.5 )
