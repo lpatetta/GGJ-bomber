@@ -129,9 +129,10 @@ func _on_Timer_timeout():
 	_sprite.texture = laugh
 	
 	tween.interpolate_property($PathFollow2D/Sprite, "modulate:a", 1, 0, 1, trasition_type_in, Tween.EASE_IN_OUT);
-	tween.interpolate_property($PathFollow2D/Sprite, "scale", starting_scale, target_scale, tween_duration/2,
+	tween.interpolate_property($PathFollow2D/Sprite, "scale", starting_scale, target_scale, tween_duration,
 		trasition_type_in, Tween.EASE_IN_OUT)
-	#tween.interpolate_callback(self, tween_duration, "_return_scale");
+	
+	tween.interpolate_callback(self, tween_duration, "_return_scale");
 	tween.start();
 	
 	audio.play()

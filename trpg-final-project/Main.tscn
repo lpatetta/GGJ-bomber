@@ -83,7 +83,7 @@ frame_1/delay_sec = 0.0
 frame_2/texture = ExtResource( 48 )
 frame_2/delay_sec = 0.0
 
-[sub_resource type="GDScript" id=19]
+[sub_resource type="GDScript" id=6]
 script/source = "extends AudioStreamPlayer
 
 
@@ -115,7 +115,7 @@ func resume_audio():
 	audio_player.play()
 "
 
-[sub_resource type="GDScript" id=20]
+[sub_resource type="GDScript" id=7]
 script/source = "extends Node
 
 
@@ -185,7 +185,7 @@ func _on_SFX_value_changed(value):
 	pass # Replace with function body.
 "
 
-[sub_resource type="DynamicFont" id=21]
+[sub_resource type="DynamicFont" id=8]
 size = 60
 font_data = ExtResource( 28 )
 
@@ -249,29 +249,89 @@ autoplay = true
 wait_time = 3.0
 one_shot = true
 
+[node name="BebeOrtiva" parent="GameBoard" instance=ExtResource( 19 )]
+position = Vector2( 193.903, 550.918 )
+starting_scale = Vector2( 0.4, 0.4 )
+target_scale = Vector2( 0.7, 0.7 )
+tween_duration = 4.0
+trasition_type_in = 0
+trasition_type_out = 2
+
+[node name="BebeOrtiva2" parent="GameBoard" instance=ExtResource( 19 )]
+position = Vector2( 721.628, 97.9988 )
+starting_scale = Vector2( 0.4, 0.4 )
+target_scale = Vector2( 0.7, 0.7 )
+tween_duration = 4.0
+trasition_type_in = 0
+trasition_type_out = 2
+
+[node name="SraOrtiva3" parent="GameBoard" instance=ExtResource( 9 )]
+position = Vector2( 495.34, 821.409 )
+
 [node name="SraOrtiva" parent="GameBoard" instance=ExtResource( 9 )]
-position = Vector2( 288, 776 )
+position = Vector2( 124.843, 468.756 )
+starting_scale = Vector2( 0.4, 0.4 )
+target_scale = Vector2( 0.7, 0.7 )
+tween_duration = 4.0
+trasition_type_in = 0
+trasition_type_out = 2
+
+[node name="SraOrtiva2" parent="GameBoard" instance=ExtResource( 9 )]
+position = Vector2( 2169.78, 495.829 )
+starting_scale = Vector2( 0.4, 0.4 )
+target_scale = Vector2( 0.7, 0.7 )
+tween_duration = 4.0
+trasition_type_in = 0
+trasition_type_out = 2
+
+[node name="DonOrtiva2" parent="GameBoard" instance=ExtResource( 31 )]
+position = Vector2( 3045.09, 905.153 )
+starting_scale = Vector2( 0.4, 0.4 )
+target_scale = Vector2( 0.7, 0.7 )
+tween_duration = 4.0
+trasition_type_in = 0
+trasition_type_out = 2
 
 [node name="DonOrtiva" parent="GameBoard" instance=ExtResource( 31 )]
-position = Vector2( 552, 768 )
+position = Vector2( 2361.56, 259.458 )
+starting_scale = Vector2( 0.4, 0.4 )
+target_scale = Vector2( 0.7, 0.7 )
+tween_duration = 4.0
+trasition_type_in = 0
+trasition_type_out = 2
 
 [node name="DoniaOrtiva" parent="GameBoard" instance=ExtResource( 8 )]
-position = Vector2( 416, 776 )
+position = Vector2( 1327.14, 172.106 )
+starting_scale = Vector2( 0.4, 0.4 )
+target_scale = Vector2( 0.7, 0.7 )
+tween_duration = 4.0
+trasition_type_in = 0
+trasition_type_out = 2
 
-[node name="BebeOrtiva" parent="GameBoard" instance=ExtResource( 19 )]
-position = Vector2( 160, 784 )
+[node name="DoniaOrtiva2" parent="GameBoard" instance=ExtResource( 8 )]
+position = Vector2( 3037.96, 598.684 )
+starting_scale = Vector2( 0.4, 0.4 )
+target_scale = Vector2( 0.7, 0.7 )
+tween_duration = 4.0
+trasition_type_in = 0
+trasition_type_out = 2
 
 [node name="PoliOrtiva" parent="GameBoard" instance=ExtResource( 2 )]
-position = Vector2( 197.408, 613.631 )
+position = Vector2( 3960.56, 431.888 )
+starting_scale = Vector2( 0.4, 0.4 )
+target_scale = Vector2( 0.7, 0.7 )
+tween_duration = 4.0
+trasition_type_in = 0
+trasition_type_out = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GameBoard"]
 stream = ExtResource( 34 )
 autoplay = true
-script = SubResource( 19 )
+script = SubResource( 6 )
 bgm = [ null, ExtResource( 15 ), ExtResource( 14 ) ]
 
 [node name="UI" type="Node" parent="."]
-script = SubResource( 20 )
+script = SubResource( 7 )
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="UI"]
 
@@ -338,7 +398,7 @@ margin_left = 463.714
 margin_top = 33.9252
 margin_right = 716.714
 margin_bottom = 126.925
-custom_fonts/font = SubResource( 21 )
+custom_fonts/font = SubResource( 8 )
 text = "120"
 align = 1
 valign = 1

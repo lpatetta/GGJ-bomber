@@ -7,7 +7,7 @@
 [ext_resource path="res://Ortivas/AnimatedTextures/bebe_ortiva_laugh.tres" type="Texture" id=5]
 [ext_resource path="res://Ortivas/AnimatedTextures/bebe_ortiva_idle.tres" type="Texture" id=6]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("PathFollow2D/Sprite:modulate")
@@ -22,7 +22,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 length = 1.4
 loop = true
 tracks/0/type = "value"
@@ -50,7 +50,7 @@ laugh = ExtResource( 5 )
 skin_offset = Vector2( 13, 56 )
 starting_scale = Vector2( 0.3, 0.3 )
 target_scale = Vector2( 0.5, 0.5 )
-tween_duration = 0.3
+tween_duration = 0.7
 trasition_type_in = 4
 trasition_type_out = 5
 
@@ -71,8 +71,8 @@ offset = Vector2( -3.8147e-06, -185 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
-anims/idle = SubResource( 2 )
-anims/selected = SubResource( 3 )
+anims/idle = SubResource( 1 )
+anims/selected = SubResource( 2 )
 
 [node name="Tween" type="Tween" parent="."]
 

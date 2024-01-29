@@ -50,7 +50,7 @@ laugh = ExtResource( 6 )
 skin_offset = Vector2( 30, 35 )
 starting_scale = Vector2( 0.3, 0.3 )
 target_scale = Vector2( 0.5, 0.5 )
-tween_duration = 0.3
+tween_duration = 0.5
 trasition_type_in = 4
 trasition_type_out = 5
 
