@@ -1,16 +1,16 @@
-[gd_scene load_steps=75 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://GameBoard/Cursor/Cursor.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Units/Unit.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Ortivas/PoliOrtiva.tscn" type="PackedScene" id=2]
 [ext_resource path="res://GameBoard/GameBoard.gd" type="Script" id=3]
 [ext_resource path="res://GameBoard/Grid.tres" type="Resource" id=4]
 [ext_resource path="res://UnitOverlay/UnitOverlay.tscn" type="PackedScene" id=5]
 [ext_resource path="res://GameBoard/UnitPath.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/descanzord/verde/03.png" type="Texture" id=7]
-[ext_resource path="res://Assets/don ortiva/don ortiva 1.png" type="Texture" id=8]
-[ext_resource path="res://Assets/don ortiva/don ortiva 2.png" type="Texture" id=9]
+[ext_resource path="res://Ortivas/DoniaOrtiva.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Ortivas/SraOrtiva.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Background/Map.tscn" type="PackedScene" id=10]
-[ext_resource path="res://vieneloratih.gd" type="Script" id=11]
+[ext_resource path="res://TimeCounter.gd" type="Script" id=11]
 [ext_resource path="res://Units/MainCharacter.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Assets/descanzord/cyan/05.png" type="Texture" id=13]
 [ext_resource path="res://Audio/BGM/track3.wav" type="AudioStream" id=14]
@@ -18,24 +18,16 @@
 [ext_resource path="res://Background/crater_tileset.tres" type="TileSet" id=16]
 [ext_resource path="res://Assets/descanzord/lila/04.png" type="Texture" id=17]
 [ext_resource path="res://Assets/descanzord/lila/05.png" type="Texture" id=18]
-[ext_resource path="res://Assets/bb ortiva/bb ortiva 1.png" type="Texture" id=19]
+[ext_resource path="res://Ortivas/BebeOrtiva.tscn" type="PackedScene" id=19]
 [ext_resource path="res://VideosMemes/video_2.ogv" type="VideoStream" id=20]
 [ext_resource path="res://Camera.gd" type="Script" id=21]
-[ext_resource path="res://Assets/don ortiva/don ortiva 4.png" type="Texture" id=22]
-[ext_resource path="res://Assets/don ortiva/don ortiva 3.png" type="Texture" id=23]
 [ext_resource path="res://VideosMemes/video_1.ogv" type="VideoStream" id=24]
 [ext_resource path="res://Assets/descanzord/amarillo/03.png" type="Texture" id=25]
-[ext_resource path="res://Assets/sra ortiva/sra ortiva 1.png" type="Texture" id=26]
-[ext_resource path="res://Assets/sra ortiva/sra ortiva 2.png" type="Texture" id=27]
+[ext_resource path="res://Fonts/8-bit Arcade In.ttf" type="DynamicFontData" id=28]
+[ext_resource path="res://Ortivas/DonOrtiva.tscn" type="PackedScene" id=31]
 [ext_resource path="res://VideosMemes/video_4.ogv" type="VideoStream" id=32]
 [ext_resource path="res://VideosMemes/video_3.ogv" type="VideoStream" id=33]
 [ext_resource path="res://Audio/BGM/No seas ortiva Main theme.wav" type="AudioStream" id=34]
-[ext_resource path="res://Assets/donia ortiva risa/doña ortiva risa 1.png" type="Texture" id=35]
-[ext_resource path="res://Assets/donia ortiva risa/doña ortiva risa 2.png" type="Texture" id=36]
-[ext_resource path="res://Assets/donia ortiva/donia ortiva 2.png" type="Texture" id=38]
-[ext_resource path="res://Assets/donia ortiva/donia ortiva 1.png" type="Texture" id=39]
-[ext_resource path="res://Assets/donia ortiva/donia ortiva 3.png" type="Texture" id=40]
-[ext_resource path="res://Assets/donia ortiva/donia ortiva 4.png" type="Texture" id=41]
 [ext_resource path="res://Assets/descanzord/naranja/05.png" type="Texture" id=42]
 [ext_resource path="res://Assets/descanzord/cyan/03.png" type="Texture" id=43]
 [ext_resource path="res://Assets/descanzord/verde/04.png" type="Texture" id=45]
@@ -46,11 +38,6 @@
 [ext_resource path="res://UI/logo.png" type="Texture" id=50]
 [ext_resource path="res://Assets/descanzord/amarillo/05.png" type="Texture" id=51]
 [ext_resource path="res://PanelContainer.gd" type="Script" id=52]
-[ext_resource path="res://Assets/bb ortiva/bb ortiva 2.png" type="Texture" id=53]
-[ext_resource path="res://Assets/sra ortiva risa/sra ortiva risa 2.png" type="Texture" id=56]
-[ext_resource path="res://Assets/sra ortiva risa/sra ortiva risa 1.png" type="Texture" id=57]
-[ext_resource path="res://Assets/don ortiva risa/don ortiva risa 1.png" type="Texture" id=58]
-[ext_resource path="res://Assets/don ortiva risa/don ortiva risa 2.png" type="Texture" id=59]
 
 [sub_resource type="AnimatedTexture" id=1]
 flags = 4
@@ -96,113 +83,7 @@ frame_1/delay_sec = 0.0
 frame_2/texture = ExtResource( 48 )
 frame_2/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=6]
-flags = 4
-frames = 4
-frame_0/texture = ExtResource( 8 )
-frame_1/texture = ExtResource( 9 )
-frame_1/delay_sec = 0.0
-frame_2/texture = ExtResource( 23 )
-frame_2/delay_sec = 0.0
-frame_3/texture = ExtResource( 22 )
-frame_3/delay_sec = 0.0
-
-[sub_resource type="AnimatedTexture" id=7]
-flags = 4
-frames = 2
-frame_0/texture = ExtResource( 58 )
-frame_1/texture = ExtResource( 59 )
-frame_1/delay_sec = 0.0
-
-[sub_resource type="AnimatedTexture" id=8]
-flags = 4
-frames = 2
-frame_0/texture = ExtResource( 58 )
-frame_1/texture = ExtResource( 59 )
-frame_1/delay_sec = 0.0
-
-[sub_resource type="AnimatedTexture" id=9]
-flags = 4
-frames = 2
-frame_0/texture = ExtResource( 35 )
-frame_1/texture = ExtResource( 36 )
-frame_1/delay_sec = 0.0
-
-[sub_resource type="AnimatedTexture" id=10]
-flags = 4
-frames = 2
-frame_0/texture = ExtResource( 26 )
-frame_1/texture = ExtResource( 27 )
-frame_1/delay_sec = 0.0
-
-[sub_resource type="AnimatedTexture" id=11]
-flags = 4
-frames = 2
-frame_0/texture = ExtResource( 57 )
-frame_1/texture = ExtResource( 56 )
-frame_1/delay_sec = 0.0
-
-[sub_resource type="AnimatedTexture" id=12]
-flags = 4
-frames = 4
-frame_0/texture = ExtResource( 39 )
-frame_1/texture = ExtResource( 38 )
-frame_1/delay_sec = 0.0
-frame_2/texture = ExtResource( 40 )
-frame_2/delay_sec = 0.0
-frame_3/texture = ExtResource( 41 )
-frame_3/delay_sec = 0.0
-
-[sub_resource type="AnimatedTexture" id=13]
-flags = 4
-frames = 2
-frame_0/texture = ExtResource( 35 )
-frame_1/texture = ExtResource( 36 )
-frame_1/delay_sec = 0.0
-
-[sub_resource type="AnimatedTexture" id=14]
-flags = 4
-frames = 2
-frame_0/texture = ExtResource( 35 )
-frame_1/texture = ExtResource( 36 )
-frame_1/delay_sec = 0.0
-
-[sub_resource type="AnimatedTexture" id=15]
-flags = 4
-frames = 2
-frame_0/texture = ExtResource( 35 )
-frame_1/texture = ExtResource( 36 )
-frame_1/delay_sec = 0.0
-
-[sub_resource type="AnimatedTexture" id=16]
-flags = 4
-frames = 2
-frame_0/texture = ExtResource( 35 )
-frame_1/texture = ExtResource( 36 )
-frame_1/delay_sec = 0.0
-
-[sub_resource type="AnimatedTexture" id=17]
-flags = 4
-frames = 2
-frame_0/texture = ExtResource( 35 )
-frame_1/texture = ExtResource( 36 )
-frame_1/delay_sec = 0.0
-
-[sub_resource type="AnimatedTexture" id=18]
-flags = 4
-frames = 2
-frame_0/texture = ExtResource( 35 )
-frame_1/texture = ExtResource( 36 )
-frame_1/delay_sec = 0.0
-
-[sub_resource type="AnimatedTexture" id=19]
-flags = 4
-frames = 2
-frame_0/texture = ExtResource( 19 )
-frame_1/texture = ExtResource( 53 )
-frame_1/delay_sec = 0.0
-
-[sub_resource type="GDScript" id=20]
+[sub_resource type="GDScript" id=19]
 script/source = "extends AudioStreamPlayer
 
 
@@ -234,7 +115,7 @@ func resume_audio():
 	audio_player.play()
 "
 
-[sub_resource type="GDScript" id=21]
+[sub_resource type="GDScript" id=20]
 script/source = "extends Node
 
 
@@ -304,12 +185,9 @@ func _on_SFX_value_changed(value):
 	pass # Replace with function body.
 "
 
-[sub_resource type="StyleBoxTexture" id=22]
-region_rect = Rect2( 0, 0, 2048, 1 )
-
-[sub_resource type="StyleBoxTexture" id=23]
-texture = SubResource( 15 )
-region_rect = Rect2( 0, 0, 2048, 1 )
+[sub_resource type="DynamicFont" id=21]
+size = 60
+font_data = ExtResource( 28 )
 
 [node name="Main" type="Node2D"]
 
@@ -351,6 +229,7 @@ TargetNodepath = NodePath("../Player")
 [node name="VideoPlayer" type="CanvasLayer" parent="GameBoard/Camera"]
 
 [node name="PanelContainer" type="PanelContainer" parent="GameBoard/Camera/VideoPlayer"]
+visible = false
 margin_right = 1287.0
 margin_bottom = 720.0
 script = ExtResource( 52 )
@@ -370,82 +249,29 @@ autoplay = true
 wait_time = 3.0
 one_shot = true
 
-[node name="Node2D" type="Node2D" parent="GameBoard"]
+[node name="SraOrtiva" parent="GameBoard" instance=ExtResource( 9 )]
+position = Vector2( 288, 776 )
 
-[node name="don-ortiva" parent="GameBoard" instance=ExtResource( 2 )]
-position = Vector2( 3205, 214 )
-skin = SubResource( 6 )
-laugh = SubResource( 7 )
-skin_offset = Vector2( 10, 30 )
+[node name="DonOrtiva" parent="GameBoard" instance=ExtResource( 31 )]
+position = Vector2( 552, 768 )
 
-[node name="don-ortiva3" parent="GameBoard" instance=ExtResource( 2 )]
-position = Vector2( 2888, 1195 )
-skin = SubResource( 6 )
-laugh = SubResource( 8 )
-skin_offset = Vector2( 10, 30 )
+[node name="DoniaOrtiva" parent="GameBoard" instance=ExtResource( 8 )]
+position = Vector2( 416, 776 )
 
-[node name="don-ortiva2" parent="GameBoard" instance=ExtResource( 2 )]
-position = Vector2( 2342, 214 )
-skin = SubResource( 6 )
-laugh = SubResource( 9 )
-skin_offset = Vector2( 10, 30 )
+[node name="BebeOrtiva" parent="GameBoard" instance=ExtResource( 19 )]
+position = Vector2( 160, 784 )
 
-[node name="sra ortiva" parent="GameBoard" instance=ExtResource( 2 )]
-position = Vector2( 4038, 395 )
-skin = SubResource( 10 )
-laugh = SubResource( 11 )
-skin_offset = Vector2( 15, 30 )
-
-[node name="donia-ortiva" parent="GameBoard" instance=ExtResource( 2 )]
-position = Vector2( 770, 54 )
-skin = SubResource( 12 )
-laugh = SubResource( 13 )
-skin_offset = Vector2( 30, 35 )
-tween_duration = 2.0
-
-[node name="donia-ortiva2" parent="GameBoard" instance=ExtResource( 2 )]
-position = Vector2( 3189, 848 )
-skin = SubResource( 12 )
-laugh = SubResource( 14 )
-skin_offset = Vector2( 30, 35 )
-
-[node name="donia-ortiva3" parent="GameBoard" instance=ExtResource( 2 )]
-position = Vector2( 160, 388 )
-skin = SubResource( 12 )
-laugh = SubResource( 15 )
-skin_offset = Vector2( 30, 35 )
-
-[node name="poli" parent="GameBoard" instance=ExtResource( 2 )]
-position = Vector2( 2879, 525 )
-skin = SubResource( 13 )
-laugh = SubResource( 16 )
-skin_offset = Vector2( 10, 28 )
-
-[node name="poli3" parent="GameBoard" instance=ExtResource( 2 )]
-position = Vector2( 2152, 519 )
-skin = SubResource( 13 )
-laugh = SubResource( 17 )
-skin_offset = Vector2( 10, 28 )
-
-[node name="poli2" parent="GameBoard" instance=ExtResource( 2 )]
-position = Vector2( 1376, 535 )
-skin = SubResource( 13 )
-laugh = SubResource( 18 )
-skin_offset = Vector2( 10, 28 )
-
-[node name="sr ortiva" parent="GameBoard" instance=ExtResource( 2 )]
-position = Vector2( 3551, 846 )
-skin = SubResource( 19 )
-skin_offset = Vector2( 24, 29 )
+[node name="PoliOrtiva" parent="GameBoard" instance=ExtResource( 2 )]
+position = Vector2( 197.408, 613.631 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GameBoard"]
 stream = ExtResource( 34 )
 autoplay = true
-script = SubResource( 20 )
+script = SubResource( 19 )
 bgm = [ null, ExtResource( 15 ), ExtResource( 14 ) ]
 
 [node name="UI" type="Node" parent="."]
-script = SubResource( 21 )
+script = SubResource( 20 )
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="UI"]
 
@@ -507,22 +333,21 @@ margin_right = 300.0
 margin_bottom = 234.0
 text = "Volver"
 
-[node name="vieneloratih" type="ProgressBar" parent="UI/CanvasLayer2"]
-margin_left = 320.0
-margin_top = 40.0
-margin_right = 920.0
-margin_bottom = 79.0
-custom_styles/fg = SubResource( 22 )
-custom_styles/bg = SubResource( 23 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
-value = 100.0
+[node name="TimeCounter" type="Label" parent="UI/CanvasLayer2"]
+margin_left = 463.714
+margin_top = 33.9252
+margin_right = 716.714
+margin_bottom = 126.925
+custom_fonts/font = SubResource( 21 )
+text = "120"
+align = 1
+valign = 1
 script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Timer" type="Timer" parent="UI/CanvasLayer2/vieneloratih"]
+[node name="Timer" type="Timer" parent="UI/CanvasLayer2/TimeCounter"]
 autostart = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -533,4 +358,4 @@ autoplay = true
 [connection signal="timeout" from="GameBoard/Camera/VideoPlayer/PanelContainer/Timer" to="GameBoard/Camera/VideoPlayer/PanelContainer" method="_on_Timer_timeout"]
 [connection signal="value_changed" from="UI/CanvasLayer2/VBoxContainer/BGM" to="UI" method="_on_BGM_value_changed"]
 [connection signal="value_changed" from="UI/CanvasLayer2/VBoxContainer/SFX" to="UI" method="_on_SFX_value_changed"]
-[connection signal="timeout" from="UI/CanvasLayer2/vieneloratih/Timer" to="UI/CanvasLayer2/vieneloratih" method="_on_Timer_timeout"]
+[connection signal="timeout" from="UI/CanvasLayer2/TimeCounter/Timer" to="UI/CanvasLayer2/TimeCounter" method="_on_Timer_timeout"]

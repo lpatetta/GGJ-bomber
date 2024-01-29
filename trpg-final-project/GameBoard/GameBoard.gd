@@ -45,11 +45,10 @@ func _reinitialize() -> void:
 	_units.clear()
 
 	for child in get_children():
-		var unit := child as Unit
-		if not unit:
-			continue
-		#if unit.is_main:
-		_units[unit.cell] = unit
+		#var unit := child as Unit
+		if "is_npc" in child:
+			_units[child.cell] = child
+		
 	_active_unit = $Player
 	_select_unit(_active_unit.cell) #reselect main unit
 

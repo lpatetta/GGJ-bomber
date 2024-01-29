@@ -41,6 +41,8 @@ var is_selected := false setget set_is_selected
 
 var _is_walking := false setget _set_is_walking
 
+var is_npc = true
+
 onready var _sprite: Sprite = $PathFollow2D/Sprite
 onready var _anim_player: AnimationPlayer = $AnimationPlayer
 onready var _path_follow: PathFollow2D = $PathFollow2D
