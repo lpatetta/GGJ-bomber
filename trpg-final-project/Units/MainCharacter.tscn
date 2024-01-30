@@ -37,20 +37,20 @@ tracks/0/keys = {
 [node name="Unit" type="Path2D"]
 curve = null
 script = ExtResource( 1 )
+move_speed = 100.0
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 rotate = false
 loop = false
 
-[node name="Shadow" type="Sprite" parent="PathFollow2D"]
-modulate = Color( 0.101961, 0.109804, 0.0901961, 0.329412 )
-position = Vector2( 0, 5.43238 )
-texture = ExtResource( 3 )
-
 [node name="Sprite" type="Sprite" parent="PathFollow2D"]
-position = Vector2( 2, 0 )
 scale = Vector2( 0.24, 0.24 )
-offset = Vector2( -3.8147e-06, -185 )
+
+[node name="Shadow" type="Sprite" parent="PathFollow2D/Sprite"]
+modulate = Color( 0.101961, 0.109804, 0.0901961, 0.329412 )
+position = Vector2( -110, 200 )
+scale = Vector2( 4.16667, 4.16667 )
+texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"

@@ -118,9 +118,6 @@ func _set_is_walking(value: bool) -> void:
 	set_process(_is_walking)
 
 func react(reaction):
-	print("REACTED to ", reaction);
-	
- 
 	$Timer.start()
 	
 
@@ -137,11 +134,7 @@ func _on_Timer_timeout():
 	
 	audio.play()
 	$TimerLaugh.start()
-	
-	
-	pass # Replace with function body.
 
 
 func _on_TimerLaugh_timeout():
 	audio.stop()
-	pass # Replace with function body.
