@@ -422,8 +422,9 @@ margin_top = 430.25
 margin_right = 597.964
 margin_bottom = 547.25
 custom_fonts/font = SubResource( 9 )
-text = "PRESS \"A\" BUTTON TO CHANGE  COLOR
+text = "
 
+PRESS 'A' BUTTON FOR HUMOR COLOR
 
 TALK TO THE ORTIVAS IN THEIR PREFERRED COLOR"
 __meta__ = {
