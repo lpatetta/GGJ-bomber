@@ -10,6 +10,7 @@ var _units := {}
 var _active_unit: MainCharacter;
 var _walkable_cells := []
 var _interacted_npc:Unit;
+var _interacted_npc_cell: Vector2;
 
 onready var _unit_overlay: UnitOverlay = $UnitOverlay
 onready var _unit_path: UnitPath = $UnitPath
@@ -115,8 +116,8 @@ func _flood_fill(cell: Vector2, max_distance: int) -> Array:
 
 			stack.append(coordinates)
 	return array
-
-
+	
+		
 func _move_main_character(new_cell:Vector2)->void:
 	_active_unit.walk_along(_unit_path.current_path)
 	is_walking = true;
@@ -126,17 +127,28 @@ func _move_main_character(new_cell:Vector2)->void:
 	_select_unit(_active_unit.cell) #reselect main unit
 	is_walking = false;
 	if _interacted_npc:
-		#$AudioStreamPlayer.stop();
-		#$Camera/VideoPlayer/PanelContainer._show_video();
-		#yield($Camera/VideoPlayer/PanelContainer, "video_finished")
+		_active_unit.trigger_talk();
+		
+		$AudioStreamPlayer.stop();
+		$Camera/VideoPlayer/PanelContainer._show_video();
+		yield($Camera/VideoPlayer/PanelContainer, "video_finished")
+		
 		$Camera.target_node = _interacted_npc
 		$Camera.is_zooming = true
-		_active_unit.trigger_talk();
+	
 		_interacted_npc.react( _active_unit._current_skin );
+		
 		yield(_interacted_npc, "talk_finished")
+		
+		if _interacted_npc.color_id == _active_unit._current_skin:
+			_units.erase(_interacted_npc_cell)
+		
 		$Camera.target_node = _active_unit
 		$Camera.is_zooming = false
-		#$AudioStreamPlayer.play();
+		
+		$AudioStreamPlayer.play();
+		
+		
 		
 	
 
@@ -173,6 +185,7 @@ func _select_unit(cell: Vector2) -> void:
 func _set_interacted_npc(cell:Vector2) -> void:
 	if _units.has(cell):
 		_interacted_npc = _units[cell]
+		_interacted_npc_cell = cell
 	else:
 		_interacted_npc = null;
 
@@ -236,3 +249,4 @@ func find_closest_walkable_cell(cell: Vector2) -> Vector2:
 
 func _on_ChangeSkinButton_pressed():
 	_active_unit._set_next_skin()
+	

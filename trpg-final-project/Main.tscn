@@ -66,6 +66,7 @@ frame_2/texture = ExtResource( 18 )
 frame_2/delay_sec = 0.0
 
 [sub_resource type="AnimatedTexture" id=4]
+flags = 4
 frames = 3
 frame_0/texture = ExtResource( 47 )
 frame_1/delay_sec = 0.0
@@ -234,7 +235,7 @@ current = true
 zoom = Vector2( 0.3, 0.3 )
 script = ExtResource( 21 )
 TargetNodepath = NodePath("../Player")
-target_zoom = Vector2( 0.2, 0.2 )
+target_zoom = Vector2( 0.25, 0.25 )
 
 [node name="VideoPlayer" type="CanvasLayer" parent="GameBoard/Camera"]
 
@@ -433,12 +434,13 @@ __meta__ = {
 autostart = true
 
 [node name="ChangeSkinButton" type="Button" parent="UI/CanvasLayer2"]
-margin_left = 948.084
-margin_top = 292.913
-margin_right = 1232.08
-margin_bottom = 403.913
+margin_left = 1063.0
+margin_top = 643.0
+margin_right = 1268.0
+margin_bottom = 710.0
+rect_scale = Vector2( 0.843712, 0.714345 )
 custom_fonts/font = SubResource( 10 )
-text = "CHANGE COLOR"
+text = "humor"
 __meta__ = {
 "_edit_use_anchors_": false
 }

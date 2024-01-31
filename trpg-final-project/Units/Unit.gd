@@ -12,6 +12,7 @@ signal talk_finished;
 
 ## Shared resource of type Grid, used to calculate map coordinates.
 export var grid: Resource
+
 ## Texture representing the unit.
 export var skin: Texture setget set_skin
 export var laugh: Texture setget set_laugh
@@ -140,8 +141,8 @@ func _on_Timer_timeout():
 		
 		tween.start();
 		
-		audio.play()
 		$TimerLaugh.start()
+		audio.play()
 	else:
 		tween.interpolate_property($PathFollow2D/Sprite, "modulate", Color.red, modulate, 1, trasition_type_in, Tween.EASE_IN_OUT);		
 		tween.start();
@@ -152,4 +153,5 @@ func _on_TimerLaugh_timeout():
 	emit_signal("talk_finished")
 	visible = false;
 	audio.stop()
+	get_tree().call_group("GameBoard","clear_deleted_units")
 	queue_free();

@@ -47,11 +47,12 @@ loop = false
 
 [node name="Sprite" type="Sprite" parent="PathFollow2D"]
 scale = Vector2( 0.24, 0.24 )
+offset = Vector2( 120, -50 )
 
 [node name="Shadow" type="Sprite" parent="PathFollow2D"]
 modulate = Color( 0.101961, 0.109804, 0.0901961, 0.329412 )
-position = Vector2( -26.4, 48 )
 texture = ExtResource( 3 )
+offset = Vector2( 0, 33 )
 
 [node name="Color" type="Sprite" parent="PathFollow2D"]
 position = Vector2( -24.5, 81.0494 )

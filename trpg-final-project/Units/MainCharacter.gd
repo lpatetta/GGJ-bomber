@@ -20,9 +20,12 @@ func _ready():
 func _process(delta):
 	var mouse_position = get_local_mouse_position()
 	if $PathFollow2D/Sprite.position.x > mouse_position.x:
-		$PathFollow2D/Sprite.set_flip_h(true)
+		var scale = Vector2(-1, 1)
+		$PathFollow2D.set_scale(scale)
+		#$PathFollow2D/Shadow.offset = -$PathFollow2D/Shadow.offset
 	elif $PathFollow2D/Sprite.position.x < mouse_position.x:
-		$PathFollow2D/Sprite.set_flip_h(false)
+		var scale = Vector2(1, 1)
+		$PathFollow2D.set_scale(scale)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if _is_changing_skin and event.is_action_released("activate"):
