@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://GameBoard/Cursor/Cursor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Ortivas/PoliOrtiva.tscn" type="PackedScene" id=2]
@@ -188,6 +188,10 @@ size = 60
 font_data = ExtResource( 28 )
 
 [sub_resource type="DynamicFont" id=9]
+size = 40
+font_data = ExtResource( 28 )
+
+[sub_resource type="DynamicFont" id=10]
 size = 40
 font_data = ExtResource( 28 )
 
@@ -428,6 +432,17 @@ __meta__ = {
 [node name="Timer" type="Timer" parent="UI/CanvasLayer2/TimeCounter"]
 autostart = true
 
+[node name="ChangeSkinButton" type="Button" parent="UI/CanvasLayer2"]
+margin_left = 948.084
+margin_top = 292.913
+margin_right = 1232.08
+margin_bottom = 403.913
+custom_fonts/font = SubResource( 10 )
+text = "CHANGE COLOR"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 autoplay = true
 
@@ -437,3 +452,4 @@ autoplay = true
 [connection signal="value_changed" from="UI/CanvasLayer2/VBoxContainer/BGM" to="UI" method="_on_BGM_value_changed"]
 [connection signal="value_changed" from="UI/CanvasLayer2/VBoxContainer/SFX" to="UI" method="_on_SFX_value_changed"]
 [connection signal="timeout" from="UI/CanvasLayer2/TimeCounter/Timer" to="UI/CanvasLayer2/TimeCounter" method="_on_Timer_timeout"]
+[connection signal="pressed" from="UI/CanvasLayer2/ChangeSkinButton" to="GameBoard" method="_on_ChangeSkinButton_pressed"]

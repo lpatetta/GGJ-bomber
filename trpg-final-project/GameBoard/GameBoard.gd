@@ -129,10 +129,12 @@ func _move_main_character(new_cell:Vector2)->void:
 		#$AudioStreamPlayer.stop();
 		#$Camera/VideoPlayer/PanelContainer._show_video();
 		#yield($Camera/VideoPlayer/PanelContainer, "video_finished")
+		$Camera.target_node = _interacted_npc
 		$Camera.is_zooming = true
 		_active_unit.trigger_talk();
 		_interacted_npc.react( _active_unit._current_skin );
 		yield(_interacted_npc, "talk_finished")
+		$Camera.target_node = _active_unit
 		$Camera.is_zooming = false
 		#$AudioStreamPlayer.play();
 		
@@ -230,3 +232,7 @@ func find_closest_walkable_cell(cell: Vector2) -> Vector2:
 			closest_cell = target
 
 	return closest_cell
+
+
+func _on_ChangeSkinButton_pressed():
+	_active_unit._set_next_skin()
