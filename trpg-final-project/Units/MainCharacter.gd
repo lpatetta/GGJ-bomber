@@ -7,12 +7,12 @@ var _current_skin = 0;
 
 export (Array, AnimatedTexture) var skins
 
-
-
+var color_ids;
 
 
 func _ready():
 	._ready();
+	is_npc = false
 	
 	if skins:
 		set_skin(skins[_current_skin])
@@ -35,13 +35,19 @@ func _set_next_skin():
 	if (_current_skin >= skins.size() ):
 		_current_skin = 0;
 		
+	_start_tween();
+	
+	modulate = color_ids[_current_skin];
+	
+	set_skin( skins[_current_skin])
+
+func _start_tween():
 	var tween = get_node("Tween")
 	tween.interpolate_property($PathFollow2D/Sprite, "scale", starting_scale,target_scale, tween_duration,
 		trasition_type_in, Tween.EASE_IN_OUT)
 	tween.interpolate_callback(self, tween_duration, "_return_scale");
 	tween.start();
-	set_skin( skins[_current_skin])
-	
+
 func _return_scale():
 	var tween = get_node("Tween")
 	
@@ -57,3 +63,7 @@ func set_skins(value: Array) -> void:
 	if not _sprite:
 		yield(self, "ready")
 	_sprite.texture = value[0]
+
+func trigger_talk():
+	_start_tween();
+	

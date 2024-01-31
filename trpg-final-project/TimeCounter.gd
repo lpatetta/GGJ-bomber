@@ -11,3 +11,6 @@ func _on_Timer_timeout():
 	text = str(max_time - current_time)
 	if current_time == max_time:
 		get_tree().change_scene("res://EndGame.tscn")
+		
+	if current_time == 10:
+		$Instructions.visible = false;

@@ -4,6 +4,7 @@ extends Node2D
 const DIRECTIONS = [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN]
 
 export var grid: Resource
+export (Array, Color) var color_ids;
 
 var _units := {}
 var _active_unit: MainCharacter;
@@ -46,10 +47,12 @@ func _reinitialize() -> void:
 
 	for child in get_children():
 		#var unit := child as Unit
-		if "is_npc" in child:
+		if "is_npc" in child and child.is_npc:
 			_units[child.cell] = child
+			child.set_color( color_ids[child.color_id] );
 		
 	_active_unit = $Player
+	_active_unit.color_ids = color_ids;
 	_select_unit(_active_unit.cell) #reselect main unit
 
 func _get_walkables(cell: Vector2, max_distance: int)-> Array:
@@ -60,7 +63,6 @@ func _get_walkables(cell: Vector2, max_distance: int)-> Array:
 		if u in array:
 			#array.remove( array.find(u) )
 			print()
-	
 	
 	var stack := [cell]
 	while not stack.empty():
@@ -124,11 +126,15 @@ func _move_main_character(new_cell:Vector2)->void:
 	_select_unit(_active_unit.cell) #reselect main unit
 	is_walking = false;
 	if _interacted_npc:
-		$AudioStreamPlayer.stop();
-		$Camera/VideoPlayer/PanelContainer._show_video();
-		yield($Camera/VideoPlayer/PanelContainer, "video_finished")
+		#$AudioStreamPlayer.stop();
+		#$Camera/VideoPlayer/PanelContainer._show_video();
+		#yield($Camera/VideoPlayer/PanelContainer, "video_finished")
+		$Camera.is_zooming = true
+		_active_unit.trigger_talk();
 		_interacted_npc.react( _active_unit._current_skin );
-		$AudioStreamPlayer.play();
+		yield(_interacted_npc, "talk_finished")
+		$Camera.is_zooming = false
+		#$AudioStreamPlayer.play();
 		
 	
 
@@ -152,10 +158,10 @@ func _move_active_unit(new_cell: Vector2) -> void:
 
 func _select_unit(cell: Vector2) -> void:
 	
-	if not _units.has(cell):
-		return
+	#if not _units.has(cell):
+	#	return
 		
-	_active_unit = _units[cell]
+	#_active_unit = _units[cell]
 			
 	_active_unit.is_selected = true
 	_walkable_cells = get_walkable_cells(_active_unit)

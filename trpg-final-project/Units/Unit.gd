@@ -6,7 +6,8 @@ class_name Unit
 extends Path2D
 
 ## Emitted when the unit reached the end of a path along which it was walking.
-signal walk_finished
+signal walk_finished;
+signal talk_finished;
 
 
 ## Shared resource of type Grid, used to calculate map coordinates.
@@ -34,6 +35,8 @@ export var tween_duration:float;
 export var trasition_type_in:int = Tween.TRANS_LINEAR;
 export var trasition_type_out:int = Tween.TRANS_SINE;
 
+export var color_id:int = 0;
+
 ## Coordinates of the current cell the cursor moved to.
 var cell := Vector2.ZERO setget set_cell
 ## Toggles the "selected" animation on the unit.
@@ -42,6 +45,7 @@ var is_selected := false setget set_is_selected
 var _is_walking := false setget _set_is_walking
 
 var is_npc = true
+var reaction_id:int;
 
 onready var _sprite: Sprite = $PathFollow2D/Sprite
 onready var _anim_player: AnimationPlayer = $AnimationPlayer
@@ -49,6 +53,8 @@ onready var _path_follow: PathFollow2D = $PathFollow2D
 
 func _ready() -> void:
 	set_process(false)
+	
+	
 
 	self.cell = grid.calculate_grid_coordinates(position)
 	position = grid.calculate_map_position(cell)
@@ -105,7 +111,9 @@ func set_laugh(value: Texture) -> void:
 	if not _sprite:
 		yield(self, "ready")
 
-
+func set_color(c:Color) -> void:
+	$PathFollow2D/Color.modulate = c;
+	
 func set_skin_offset(value: Vector2) -> void:
 	skin_offset = value
 	if not _sprite:
@@ -118,23 +126,30 @@ func _set_is_walking(value: bool) -> void:
 	set_process(_is_walking)
 
 func react(reaction):
+	reaction_id = reaction
 	$Timer.start()
 	
-
-
+	
 func _on_Timer_timeout():
-	_sprite.texture = laugh
+	if ( reaction_id == color_id ):
+		_sprite.texture = laugh
 	
-	tween.interpolate_property($PathFollow2D/Sprite, "modulate:a", 1, 0, 1, trasition_type_in, Tween.EASE_IN_OUT);
-	tween.interpolate_property($PathFollow2D/Sprite, "scale", starting_scale, target_scale, tween_duration,
-		trasition_type_in, Tween.EASE_IN_OUT)
-	
-	tween.interpolate_callback(self, tween_duration, "_return_scale");
-	tween.start();
-	
-	audio.play()
-	$TimerLaugh.start()
+		tween.interpolate_property($PathFollow2D/Sprite, "modulate:a", 1, 0, 1, trasition_type_in, Tween.EASE_IN_OUT);
+		tween.interpolate_property($PathFollow2D/Sprite, "scale", starting_scale, target_scale, tween_duration,
+			trasition_type_in, Tween.EASE_IN_OUT)
+		
+		tween.start();
+		
+		audio.play()
+		$TimerLaugh.start()
+	else:
+		tween.interpolate_property($PathFollow2D/Sprite, "modulate", Color.red, modulate, 1, trasition_type_in, Tween.EASE_IN_OUT);		
+		tween.start();
+		emit_signal("talk_finished")
 
 
 func _on_TimerLaugh_timeout():
+	emit_signal("talk_finished")
+	visible = false;
 	audio.stop()
+	queue_free();

@@ -120,18 +120,21 @@ texture = ExtResource( 4 )
 position = Vector2( 725.732, 176.632 )
 scale = Vector2( 0.512807, 0.578518 )
 frames = SubResource( 3 )
+frame = 1
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="CanvasLayer"]
 position = Vector2( 951.057, 176.632 )
 scale = Vector2( 0.512807, 0.578518 )
 frames = SubResource( 4 )
+frame = 3
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="CanvasLayer"]
 position = Vector2( 1087.28, 173.081 )
 scale = Vector2( 0.512807, 0.578518 )
 frames = SubResource( 5 )
+frame = 3
 playing = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
