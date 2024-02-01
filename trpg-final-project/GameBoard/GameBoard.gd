@@ -136,7 +136,9 @@ func _move_main_character(new_cell:Vector2)->void:
 		else:
 			_active_unit.trigger_talk();
 			
-			$AudioStreamPlayer.stop();
+			var pauseposition = $AudioStreamPlayer.get_playback_position();
+			$AudioStreamPlayer.stop()
+			
 			$Camera/VideoPlayer/PanelContainer._show_video();
 			yield($Camera/VideoPlayer/PanelContainer, "video_finished")
 			
@@ -159,6 +161,9 @@ func _move_main_character(new_cell:Vector2)->void:
 			$Camera.is_zooming = false
 			
 			$AudioStreamPlayer.play();
+			$AudioStreamPlayer.seek(pauseposition);
+			
+			
 			
 		
 		
