@@ -16,6 +16,7 @@ onready var _unit_overlay: UnitOverlay = $UnitOverlay
 onready var _unit_path: UnitPath = $UnitPath
 
 var is_walking = false;
+var skin_id:int;
 
 func _ready() -> void:
 	#get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_KEEP, resolution_list[current_res_index])
@@ -119,6 +120,9 @@ func _flood_fill(cell: Vector2, max_distance: int) -> Array:
 	
 		
 func _move_main_character(new_cell:Vector2)->void:
+	if $Camera/VideoPlayer/PanelContainer.is_playing:
+		return
+	
 	_active_unit.walk_along(_unit_path.current_path)
 	is_walking = true;
 	yield(_active_unit, "walk_finished")
@@ -127,27 +131,35 @@ func _move_main_character(new_cell:Vector2)->void:
 	_select_unit(_active_unit.cell) #reselect main unit
 	is_walking = false;
 	if _interacted_npc:
-		_active_unit.trigger_talk();
+		if _interacted_npc.is_reacting:
+			return
+		else:
+			_active_unit.trigger_talk();
+			
+			$AudioStreamPlayer.stop();
+			$Camera/VideoPlayer/PanelContainer._show_video();
+			yield($Camera/VideoPlayer/PanelContainer, "video_finished")
+			
+			$Camera.target_node = _interacted_npc
+			$Camera.is_zooming = true
 		
-		$AudioStreamPlayer.stop();
-		$Camera/VideoPlayer/PanelContainer._show_video();
-		yield($Camera/VideoPlayer/PanelContainer, "video_finished")
-		
-		$Camera.target_node = _interacted_npc
-		$Camera.is_zooming = true
-	
-		_interacted_npc.react( _active_unit._current_skin );
-		
-		yield(_interacted_npc, "talk_finished")
-		
-		if _interacted_npc.color_id == _active_unit._current_skin:
-			_units.erase(_interacted_npc_cell)
-		
-		$Camera.target_node = _active_unit
-		$Camera.is_zooming = false
-		
-		$AudioStreamPlayer.play();
-		
+			#null exceptions make me do unnecessary things...
+			if _active_unit._current_skin:
+				skin_id = _active_unit._current_skin
+			else:
+				skin_id = 0
+			
+			_interacted_npc.react( skin_id );
+			yield(_interacted_npc, "talk_finished")
+			
+			if _interacted_npc.color_id == skin_id:
+				_units.erase(_interacted_npc_cell)
+			
+			$Camera.target_node = _active_unit
+			$Camera.is_zooming = false
+			
+			$AudioStreamPlayer.play();
+			
 		
 		
 	

@@ -28,6 +28,7 @@ export var skin_offset := Vector2.ZERO setget set_skin_offset
 export var move_speed := 600.0
 
 export var is_main:= false
+export var is_reacting:=false
 
 export var starting_scale:Vector2;
 export var target_scale:Vector2;
@@ -37,7 +38,7 @@ export var trasition_type_in:int = Tween.TRANS_LINEAR;
 export var trasition_type_out:int = Tween.TRANS_SINE;
 
 export var color_id:int = 0;
-
+var color_ids:Array;
 
 ## Coordinates of the current cell the cursor moved to.
 var cell := Vector2.ZERO setget set_cell
@@ -48,7 +49,7 @@ var _is_walking := false setget _set_is_walking
 
 var is_npc = true;
 var reaction_id:int;
-var color_ids:Array;
+
 
 onready var _sprite: Sprite = $PathFollow2D/Sprite
 onready var _anim_player: AnimationPlayer = $AnimationPlayer
@@ -138,12 +139,13 @@ func _on_Timer_timeout():
 	if ( reaction_id == color_id ):
 		_sprite.texture = laugh
 		color_ids = get_parent().color_ids
-		print("_on_Timer_timeout")
-		var color:Color = color_ids[color_id]
-		tween.interpolate_property($PathFollow2D/Sprite, "modulate", color, modulate, 2, trasition_type_in, Tween.EASE_IN_OUT);
 		
+		var color:Color = color_ids[color_id]
+		
+		tween.interpolate_property($PathFollow2D/Sprite, "modulate", color, modulate, 2, trasition_type_in, Tween.EASE_IN_OUT);
+		tween.interpolate_property($PathFollow2D, "modulate:a", modulate.a, 0.6, tween_duration, trasition_type_out, Tween.EASE_OUT);
 		tween.interpolate_property($PathFollow2D/Sprite, "scale", starting_scale, target_scale, tween_duration,
-			trasition_type_out, Tween.EASE_IN_OUT)
+			trasition_type_out, Tween.EASE_OUT)
 		tween.start();
 		
 		$TimerLaugh.start()
@@ -155,6 +157,9 @@ func _on_Timer_timeout():
 
 
 func _on_TimerLaugh_timeout():
+	#tween.reset_all();
+	#tween.interpolate_property($PathFollow2D/Sprite, "modulate:a", modulate.a, 1, tween_duration/5, trasition_type_out, Tween.EASE_OUT);
+	#tween.start();
 	emit_signal("talk_finished")
 	visible = false;
 	audio.stop()

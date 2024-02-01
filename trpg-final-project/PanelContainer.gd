@@ -1,7 +1,7 @@
 extends PanelContainer
 
 signal video_finished
-var was_playing = false;
+export var is_playing = false;
 var target_scale:Vector2;
 var start_scale
 
@@ -29,7 +29,7 @@ func _show_video():
 	
 	$VideoPlayer.stream = streams[ randi() % streams.size() ]
 	rect_scale = start_scale
-	was_playing = true
+	is_playing = true
 	visible = true;
 	$VideoPlayer.play();
 	$Timer.start()
@@ -38,4 +38,4 @@ func _on_Timer_timeout():
 	emit_signal("video_finished")
 	$VideoPlayer.stop();
 	visible = false
-	was_playing = false
+	is_playing = false

@@ -10,9 +10,13 @@ export (Array, AnimatedTexture) var skins
 func _ready():
 	._ready();
 	is_npc = false
-
+	color_ids = get_parent().color_ids;
+	_current_skin = 0
+	
 	if skins:
 		set_skin(skins[_current_skin])
+		
+	$PathFollow2D/Color.modulate = color_ids[_current_skin]
 
 func _process(delta):
 	var mouse_position = get_local_mouse_position()
@@ -38,7 +42,7 @@ func _set_next_skin():
 	_start_tween();
 	
 	modulate = color_ids[_current_skin];
-	
+	$PathFollow2D/Color.modulate = color_ids[_current_skin];
 	set_skin( skins[_current_skin])
 
 func _start_tween():

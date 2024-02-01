@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://GameBoard/Cursor/Cursor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Ortivas/PoliOrtiva.tscn" type="PackedScene" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://Ortivas/BebeOrtiva.tscn" type="PackedScene" id=19]
 [ext_resource path="res://VideosMemes/video_2.ogv" type="VideoStream" id=20]
 [ext_resource path="res://Camera.gd" type="Script" id=21]
+[ext_resource path="res://Assets/descanzord/naranja/04.png" type="Texture" id=22]
 [ext_resource path="res://VideosMemes/video_1.ogv" type="VideoStream" id=24]
 [ext_resource path="res://Assets/descanzord/amarillo/03.png" type="Texture" id=25]
 [ext_resource path="res://Fonts/8-bit Arcade In.ttf" type="DynamicFontData" id=28]
@@ -66,8 +67,10 @@ frame_2/texture = ExtResource( 18 )
 frame_2/delay_sec = 0.0
 
 [sub_resource type="AnimatedTexture" id=4]
+flags = 4
 frames = 3
 frame_0/texture = ExtResource( 47 )
+frame_1/texture = ExtResource( 22 )
 frame_1/delay_sec = 0.0
 frame_2/texture = ExtResource( 42 )
 frame_2/delay_sec = 0.0
@@ -263,14 +266,16 @@ one_shot = true
 [node name="SraOrtiva3" parent="GameBoard" instance=ExtResource( 9 )]
 position = Vector2( 463.714, 818.831 )
 z_index = 1
-starting_scale = Vector2( 0.2, 0.2 )
-target_scale = Vector2( 0.3, 0.3 )
-tween_duration = 0.9
+starting_scale = Vector2( 0.15, 0.15 )
+target_scale = Vector2( 0.25, 0.25 )
+tween_duration = 1.2
+trasition_type_in = 2
+trasition_type_out = 4
 
 [node name="BebeOrtiva" parent="GameBoard" instance=ExtResource( 19 )]
 position = Vector2( 193.903, 596.684 )
-starting_scale = Vector2( 0.2, 0.2 )
-target_scale = Vector2( 0.3, 0.3 )
+starting_scale = Vector2( 0.25, 0.25 )
+target_scale = Vector2( 0.35, 0.35 )
 tween_duration = 0.9
 trasition_type_in = 0
 trasition_type_out = 2
@@ -278,8 +283,8 @@ color_id = 1
 
 [node name="SraOrtiva" parent="GameBoard" instance=ExtResource( 9 )]
 position = Vector2( 124.843, 468.756 )
-starting_scale = Vector2( 0.2, 0.2 )
-target_scale = Vector2( 0.3, 0.3 )
+starting_scale = Vector2( 0.25, 0.25 )
+target_scale = Vector2( 0.35, 0.35 )
 tween_duration = 1.7
 trasition_type_in = 0
 trasition_type_out = 2
@@ -287,8 +292,8 @@ color_id = 2
 
 [node name="BebeOrtiva2" parent="GameBoard" instance=ExtResource( 19 )]
 position = Vector2( 721.628, 97.9988 )
-starting_scale = Vector2( 0.2, 0.2 )
-target_scale = Vector2( 0.3, 0.3 )
+starting_scale = Vector2( 0.25, 0.25 )
+target_scale = Vector2( 0.35, 0.35 )
 tween_duration = 1.7
 trasition_type_in = 0
 trasition_type_out = 2
@@ -296,8 +301,8 @@ color_id = 1
 
 [node name="DoniaOrtiva" parent="GameBoard" instance=ExtResource( 8 )]
 position = Vector2( 1389.14, 172.106 )
-starting_scale = Vector2( 0.4, 0.4 )
-target_scale = Vector2( 0.7, 0.7 )
+starting_scale = Vector2( 0.25, 0.25 )
+target_scale = Vector2( 0.35, 0.35 )
 tween_duration = 1.7
 trasition_type_in = 0
 trasition_type_out = 2
@@ -305,8 +310,8 @@ color_id = 3
 
 [node name="SraOrtiva2" parent="GameBoard" instance=ExtResource( 9 )]
 position = Vector2( 2169.78, 495.829 )
-starting_scale = Vector2( 0.4, 0.4 )
-target_scale = Vector2( 0.7, 0.7 )
+starting_scale = Vector2( 0.25, 0.25 )
+target_scale = Vector2( 0.35, 0.35 )
 tween_duration = 1.7
 trasition_type_in = 0
 trasition_type_out = 2
@@ -314,8 +319,8 @@ color_id = 3
 
 [node name="DonOrtiva" parent="GameBoard" instance=ExtResource( 31 )]
 position = Vector2( 2361.56, 259.458 )
-starting_scale = Vector2( 0.4, 0.4 )
-target_scale = Vector2( 0.7, 0.7 )
+starting_scale = Vector2( 0.25, 0.25 )
+target_scale = Vector2( 0.35, 0.35 )
 tween_duration = 1.7
 trasition_type_in = 0
 trasition_type_out = 2
@@ -323,8 +328,8 @@ color_id = 4
 
 [node name="DoniaOrtiva2" parent="GameBoard" instance=ExtResource( 8 )]
 position = Vector2( 3037.96, 598.684 )
-starting_scale = Vector2( 0.4, 0.4 )
-target_scale = Vector2( 0.7, 0.7 )
+starting_scale = Vector2( 0.25, 0.25 )
+target_scale = Vector2( 0.35, 0.35 )
 tween_duration = 1.7
 trasition_type_in = 0
 trasition_type_out = 2
@@ -332,8 +337,8 @@ color_id = 2
 
 [node name="DonOrtiva2" parent="GameBoard" instance=ExtResource( 31 )]
 position = Vector2( 3045.09, 905.153 )
-starting_scale = Vector2( 0.4, 0.4 )
-target_scale = Vector2( 0.7, 0.7 )
+starting_scale = Vector2( 0.25, 0.25 )
+target_scale = Vector2( 0.35, 0.35 )
 tween_duration = 1.7
 trasition_type_in = 0
 trasition_type_out = 2
@@ -341,8 +346,8 @@ color_id = 4
 
 [node name="PoliOrtiva" parent="GameBoard" instance=ExtResource( 2 )]
 position = Vector2( 3960.56, 431.888 )
-starting_scale = Vector2( 0.4, 0.4 )
-target_scale = Vector2( 0.7, 0.7 )
+starting_scale = Vector2( 0.25, 0.25 )
+target_scale = Vector2( 0.35, 0.35 )
 tween_duration = 1.7
 trasition_type_in = 0
 trasition_type_out = 2
