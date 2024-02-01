@@ -7,13 +7,10 @@ var _current_skin = 0;
 
 export (Array, AnimatedTexture) var skins
 
-var color_ids;
-
-
 func _ready():
 	._ready();
 	is_npc = false
-	
+
 	if skins:
 		set_skin(skins[_current_skin])
 

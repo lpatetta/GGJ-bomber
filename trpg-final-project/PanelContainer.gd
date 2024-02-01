@@ -12,7 +12,7 @@ export (Array, VideoStream) var streams
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	start_scale = Vector2(0.2, 0.2);
-	target_scale = Vector2(1, 1);
+	target_scale = Vector2(0.35, 0.35);
 	visible = false;
 	#if was_playing and not $VideoPlayer.is_playing():
 		
@@ -21,13 +21,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	rect_position = Vector2(40.0, 40.0) # TODO: depend on Position of player
 	rect_scale = lerp( rect_scale, target_scale, 0.2)
 	 
 
 func _show_video():
 	
 	$VideoPlayer.stream = streams[ randi() % streams.size() ]
-	
 	rect_scale = start_scale
 	was_playing = true
 	visible = true;

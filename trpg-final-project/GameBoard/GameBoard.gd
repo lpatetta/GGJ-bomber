@@ -42,7 +42,6 @@ func is_occupied(cell: Vector2) -> bool:
 func get_walkable_cells(unit: Unit) -> Array:
 	return _get_walkables(unit.cell, unit.move_range);
 
-
 func _reinitialize() -> void:
 	_units.clear()
 
@@ -50,7 +49,8 @@ func _reinitialize() -> void:
 		#var unit := child as Unit
 		if "is_npc" in child and child.is_npc:
 			_units[child.cell] = child
-			child.set_color( color_ids[child.color_id] );
+			
+			child.set_color( color_ids[child.color_id ] );
 		
 	_active_unit = $Player
 	_active_unit.color_ids = color_ids;

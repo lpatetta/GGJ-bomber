@@ -38,6 +38,7 @@ export var trasition_type_out:int = Tween.TRANS_SINE;
 
 export var color_id:int = 0;
 
+
 ## Coordinates of the current cell the cursor moved to.
 var cell := Vector2.ZERO setget set_cell
 ## Toggles the "selected" animation on the unit.
@@ -45,8 +46,9 @@ var is_selected := false setget set_is_selected
 
 var _is_walking := false setget _set_is_walking
 
-var is_npc = true
+var is_npc = true;
 var reaction_id:int;
+var color_ids:Array;
 
 onready var _sprite: Sprite = $PathFollow2D/Sprite
 onready var _anim_player: AnimationPlayer = $AnimationPlayer
@@ -113,6 +115,7 @@ func set_laugh(value: Texture) -> void:
 		yield(self, "ready")
 
 func set_color(c:Color) -> void:
+	$PathFollow2D/Sprite.modulate = c;
 	$PathFollow2D/Color.modulate = c;
 	
 func set_skin_offset(value: Vector2) -> void:
@@ -134,11 +137,13 @@ func react(reaction):
 func _on_Timer_timeout():
 	if ( reaction_id == color_id ):
 		_sprite.texture = laugh
-	
-		tween.interpolate_property($PathFollow2D/Sprite, "modulate:a", 1, 0, 1, trasition_type_in, Tween.EASE_IN_OUT);
-		tween.interpolate_property($PathFollow2D/Sprite, "scale", starting_scale, target_scale, tween_duration,
-			trasition_type_in, Tween.EASE_IN_OUT)
+		color_ids = get_parent().color_ids
+		print("_on_Timer_timeout")
+		var color:Color = color_ids[color_id]
+		tween.interpolate_property($PathFollow2D/Sprite, "modulate", color, modulate, 2, trasition_type_in, Tween.EASE_IN_OUT);
 		
+		tween.interpolate_property($PathFollow2D/Sprite, "scale", starting_scale, target_scale, tween_duration,
+			trasition_type_out, Tween.EASE_IN_OUT)
 		tween.start();
 		
 		$TimerLaugh.start()

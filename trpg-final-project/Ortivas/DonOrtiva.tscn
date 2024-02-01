@@ -56,21 +56,24 @@ trasition_type_out = 5
 rotate = false
 loop = false
 
-[node name="Shadow" type="Sprite" parent="PathFollow2D"]
-modulate = Color( 0.101961, 0.109804, 0.0901961, 0.329412 )
-position = Vector2( 0, 35 )
-texture = ExtResource( 3 )
-
 [node name="Sprite" type="Sprite" parent="PathFollow2D"]
 position = Vector2( 14, 35 )
 scale = Vector2( 0.24, 0.24 )
+z_index = 5
 texture = ExtResource( 6 )
 offset = Vector2( -3.8147e-06, -185 )
 
+[node name="Shadow" type="Sprite" parent="PathFollow2D"]
+modulate = Color( 0.101961, 0.109804, 0.0901961, 0.329412 )
+position = Vector2( 0, 35 )
+z_index = 4
+texture = ExtResource( 3 )
+
 [node name="Color" type="Sprite" parent="PathFollow2D"]
-position = Vector2( 63.693, -43.307 )
 scale = Vector2( 1.03465, 1.03465 )
+z_index = 3
 texture = ExtResource( 7 )
+offset = Vector2( -7, 80 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
