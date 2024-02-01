@@ -17,6 +17,7 @@ onready var _unit_path: UnitPath = $UnitPath
 
 var is_walking = false;
 var skin_id:int;
+var is_busy = false;
 
 func _ready() -> void:
 	#get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_KEEP, resolution_list[current_res_index])
@@ -131,13 +132,14 @@ func _move_main_character(new_cell:Vector2)->void:
 	_select_unit(_active_unit.cell) #reselect main unit
 	is_walking = false;
 	if _interacted_npc:
-		if _interacted_npc.is_reacting:
+		if _interacted_npc.is_reacting or is_busy:
 			return
 		else:
+			is_busy = true;
 			_active_unit.trigger_talk();
 			
 			var pauseposition = $AudioStreamPlayer.get_playback_position();
-			$AudioStreamPlayer.stop()
+			$AudioStreamPlayer.stop();
 			
 			$Camera/VideoPlayer/PanelContainer._show_video();
 			yield($Camera/VideoPlayer/PanelContainer, "video_finished")
@@ -163,7 +165,7 @@ func _move_main_character(new_cell:Vector2)->void:
 			$AudioStreamPlayer.play();
 			$AudioStreamPlayer.seek(pauseposition);
 			
-			
+			is_busy = false;
 			
 		
 		

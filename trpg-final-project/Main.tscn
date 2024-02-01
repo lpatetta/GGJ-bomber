@@ -22,6 +22,7 @@
 [ext_resource path="res://VideosMemes/video_2.ogv" type="VideoStream" id=20]
 [ext_resource path="res://Camera.gd" type="Script" id=21]
 [ext_resource path="res://Assets/descanzord/naranja/04.png" type="Texture" id=22]
+[ext_resource path="res://Fonts/buttonfont.tres" type="DynamicFont" id=23]
 [ext_resource path="res://VideosMemes/video_1.ogv" type="VideoStream" id=24]
 [ext_resource path="res://Assets/descanzord/amarillo/03.png" type="Texture" id=25]
 [ext_resource path="res://Fonts/8-bit Arcade In.ttf" type="DynamicFontData" id=28]
@@ -190,10 +191,6 @@ func _on_SFX_value_changed(value):
 size = 60
 font_data = ExtResource( 28 )
 
-[sub_resource type="DynamicFont" id=9]
-size = 40
-font_data = ExtResource( 28 )
-
 [sub_resource type="DynamicFont" id=10]
 size = 40
 font_data = ExtResource( 28 )
@@ -355,6 +352,7 @@ color_id = 4
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GameBoard"]
 stream = ExtResource( 34 )
+volume_db = -3.0
 autoplay = true
 script = SubResource( 6 )
 bgm = [ null, ExtResource( 15 ), ExtResource( 14 ) ]
@@ -437,7 +435,7 @@ margin_left = -203.036
 margin_top = 430.25
 margin_right = 597.964
 margin_bottom = 547.25
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = ExtResource( 23 )
 text = "
 
 PRESS 'A' BUTTON FOR HUMOR COLOR
@@ -463,6 +461,7 @@ __meta__ = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
 autoplay = true
 
 [connection signal="accept_pressed" from="GameBoard/Cursor" to="GameBoard" method="_on_Cursor_accept_pressed"]

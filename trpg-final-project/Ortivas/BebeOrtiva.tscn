@@ -75,7 +75,6 @@ offset = Vector2( -3.8147e-06, -185 )
 
 [node name="Sprite2" type="Sprite" parent="PathFollow2D/Sprite"]
 position = Vector2( 0, -183 )
-scale = Vector2( 1, 1 )
 z_index = 5
 texture = ExtResource( 8 )
 
@@ -99,7 +98,6 @@ one_shot = true
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 0, -2 )
 stream = ExtResource( 4 )
-volume_db = 20.0
 
 [node name="TimerLaugh" type="Timer" parent="."]
 wait_time = 3.0
